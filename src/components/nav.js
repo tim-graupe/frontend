@@ -5,7 +5,7 @@ export const NavBar = ({ props }) => {
     <div className="nav-bar">
       <p>Welcome back, {props.firstName}!</p>
 
-      {props.incomingFriendRequests.length}
+      {/* {props.incomingFriendRequests.length} */}
     </div>
   );
 };

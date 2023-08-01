@@ -30,7 +30,7 @@ export const Status = ({ props }) => {
             type="text"
             placeholder={props}
             onChange={(e) => setNewStatus(e.target.value)}
-            maxLength="100"
+            maxLength="25"
           />{" "}
           <p>{100 - newStatus.length} characters remaining</p>
           <button onClick={sendNewStatus}>Update</button>

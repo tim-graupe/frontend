@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
 import { UserHome } from "./components/userDash/userHome";
+import { Timeline } from "./components/userDash/timeline";
 
 function App() {
   const [user, setUser] = useState("");
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<UserHome />} />
           <Route path="/user/:id" element={<UserHome />} />
           <Route path="/user/:id/new_post" element={<NewPost />} />
+          <Route path="/user/:id/posts" element={<Timeline />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

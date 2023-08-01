@@ -30,26 +30,23 @@ export const Login = () => {
       .then((res) => res.json())
       .then((res) => localStorage.setItem("user", JSON.stringify(res.user)));
   };
-  if (localStorage.getItem("user") === null) {
-    redirect(`/user/${localStorage.getItem("user")}`);
-  } else {
-    return (
-      <div className="App">
-        <input
-          type="email"
-          name="email"
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={submit}>Login</button> <br></br>
-        {message}
-      </div>
-    );
-  }
+
+  return (
+    <div className="App">
+      <input
+        type="email"
+        name="email"
+        required
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        name="password"
+        required
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={submit}>Login</button> <br></br>
+      {message}
+    </div>
+  );
 };

@@ -5,6 +5,7 @@ import { Friends } from "./friendsList";
 import { NavBar } from "../nav";
 import { Status } from "./status";
 import { NewPost } from "../newPost";
+import { Timeline } from "./timeline";
 
 export const UserHome = () => {
   const [user, setUser] = useState("");
@@ -24,10 +25,11 @@ export const UserHome = () => {
 
   return (
     <div className="user-profile-container">
+      <Timeline />
       <NewPost />
-      {/* <NavBar props={user} />
+      <NavBar props={user} />
 
-      <Status props={user.status} /> */}
+      <Status props={user.status} />
     </div>
   );
 };
