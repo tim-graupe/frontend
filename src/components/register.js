@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -6,12 +7,16 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [dob, setdob] = useState("");
+
   const jsonData = {
     firstName: firstName,
     lastName: lastName,
     email: email,
     password: password,
+    dob: dob,
   };
+
   const submit = async () => {
     const response = await fetch("http://localhost:4000/register", {
       mode: "cors",
@@ -57,6 +62,14 @@ export const Register = () => {
         required
         onChange={(e) => setEmail(e.target.value)}
       />
+      <input
+        type="date"
+        name="dob"
+        className="form-control shadow-none"
+        placeholder="mm/dd/yyyy"
+        aria-describedby="button-addon2"
+        onChange={(e) => setdob(e.target.value)}
+      />{" "}
       <button onClick={submit}>Register</button> <br></br>
       {message}
     </div>
