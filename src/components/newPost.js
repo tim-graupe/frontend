@@ -22,11 +22,12 @@ export const NewPost = () => {
   return (
     <div>
       <br></br>
-      <label>Content</label>
+      <label>Something on your mind?</label>
       <br></br>
       <textarea
         type="text"
         name="content"
+        maxLength="2000"
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
       <button

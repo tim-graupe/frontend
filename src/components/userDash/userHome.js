@@ -10,26 +10,28 @@ import { Timeline } from "./timeline";
 export const UserHome = () => {
   const [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const id = useParams().id;
+
+  const getDashBoard = () => {
+    fetch("http://localhost:4000/", {
+      mode: "cors",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((res) => setUser(res.user));
+  };
+
   useEffect(() => {
-    const getDashBoard = () => {
-      fetch(`http://localhost:4000/user/${id}`, {
-        mode: "cors",
-      })
-        .then((response) => response.json())
-        .then((response) => setUser(response));
-    };
     getDashBoard();
     setIsLoading(false);
   }, []);
 
-  return (
-    <div className="user-profile-container">
-      <Timeline />
-      <NewPost />
-      <NavBar props={user} />
+  // return (
+  //   <div className="user-profile-container">
+  //     <Timeline />
+  //     <NewPost />
+  //     <NavBar props={user} />
 
-      <Status props={user.status} />
-    </div>
-  );
+  //     <Status props={user.status} />
+  //   </div>
+  // );
 };

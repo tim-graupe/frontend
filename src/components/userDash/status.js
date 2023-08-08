@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export const Status = ({ props }) => {
   const [newStatus, setNewStatus] = useState("");
   const [textbox, setTextbox] = useState(false);
-  const [msg, setMsg] = useState("");
+
   const id = useParams().id;
   const showTextBox = () => {
     setTextbox(!textbox);
@@ -32,7 +32,7 @@ export const Status = ({ props }) => {
             onChange={(e) => setNewStatus(e.target.value)}
             maxLength="25"
           />{" "}
-          <p>{100 - newStatus.length} characters remaining</p>
+          <p>{25 - newStatus.length} characters remaining</p>
           <button onClick={sendNewStatus}>Update</button>
           <button onClick={showTextBox}>Cancel</button>
         </div>

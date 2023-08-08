@@ -8,6 +8,12 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [dob, setdob] = useState("");
+  const [relationship, setRelationship] = useState("");
+  const [politics, setPolitics] = useState("");
+  const [home, setHome] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
+  const [highschool, setHighschool] = useState("");
+  const [college, setCollege] = useState("");
 
   const jsonData = {
     firstName: firstName,
@@ -15,6 +21,12 @@ export const Register = () => {
     email: email,
     password: password,
     dob: dob,
+    politics: politics,
+    relationship: relationship,
+    high_school: highschool,
+    college: college,
+    currentCity: currentCity,
+    home_town: home,
   };
 
   const submit = async () => {
@@ -70,6 +82,47 @@ export const Register = () => {
         aria-describedby="button-addon2"
         onChange={(e) => setdob(e.target.value)}
       />{" "}
+      <select
+        name="relationship"
+        onChange={(e) => setRelationship(e.target.value)}
+      >
+        <option value="single">Single</option>
+        <option value="in a relationship">In a relationship</option>
+        <option value="engaged">Engaged</option>
+        <option value="married">Married</option>
+        <option value="it's complicated">It's complicated</option>
+        <option value="decline">Prefer not to say</option>
+      </select>
+      <select name="politics" onChange={(e) => setPolitics(e.target.value)}>
+        <option value="very liberal">Very Liberal</option>
+        <option value="liberal">Liberal</option>
+        <option value="moderate">Moderate</option>
+        <option value="apolitical">Apolitical</option>
+        <option value="conservative">Conservative</option>
+        <option value="very conservative">Very Conservative</option>
+
+        <option value="decline">Prefer not to say</option>
+      </select>
+      <input
+        type="text"
+        name="home"
+        onChange={(e) => setHome(e.target.value)}
+      />
+      <input
+        type="text"
+        name="current"
+        onChange={(e) => setCurrentCity(e.target.value)}
+      />
+      <inpt
+        type="text"
+        name="highschool"
+        onChange={(e) => setCurrentCity(e.target.value)}
+      />
+      <input
+        type="text"
+        name="college"
+        onChange={(e) => setCollege(e.target.value)}
+      />
       <button onClick={submit}>Register</button> <br></br>
       {message}
     </div>
