@@ -5,9 +5,8 @@ import { Login } from "./components/login";
 import { useEffect, useState } from "react";
 import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
-import { UserHome } from "./components/userDash/userHome";
 import { Timeline } from "./components/userDash/timeline";
-import { UserProfile } from "./components/userProfile";
+import { UserHome } from "./components/userHome";
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="/home" element={<UserHome />} />
         <Route path="/user/:id/new_post" element={<NewPost />} />
         <Route path="/user/:id/posts" element={<Timeline />} />
         <Route path="*" element={<NoPage />} />

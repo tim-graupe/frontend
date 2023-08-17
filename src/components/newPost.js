@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const NewPost = () => {
+export const NewPost = ({ props }) => {
   const [content, setContent] = useState("");
   const id = useParams().id;
   const jsonData = {
@@ -9,7 +9,8 @@ export const NewPost = () => {
   };
 
   function handleClick() {
-    fetch(`http://localhost:4000/user/${id}/new_post`, {
+    //change id on 13 to props and pass user's _id
+    fetch(`http://localhost:4000/user/${props}/new_post`, {
       method: "POST",
       mode: "cors",
       headers: {

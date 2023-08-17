@@ -11,10 +11,10 @@ export const Login = () => {
     email: email,
     password: password,
   };
-  const handleGoogle = () => {
+
+  const handleSignInGoogle = () => {
     window.open("http://localhost:4000/auth/google", "_self");
   };
-
   const submit = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:4000/login", {
@@ -53,7 +53,7 @@ export const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={submit}>Login</button> <br></br>
-      <GoogleButton onClick={handleGoogle} />
+      <GoogleButton onClick={handleSignInGoogle} />
       {message}
     </div>
   );

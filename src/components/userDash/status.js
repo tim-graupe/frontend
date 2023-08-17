@@ -5,12 +5,11 @@ export const Status = ({ props }) => {
   const [newStatus, setNewStatus] = useState("");
   const [textbox, setTextbox] = useState(false);
 
-  const id = useParams().id;
   const showTextBox = () => {
     setTextbox(!textbox);
   };
   const sendNewStatus = () => {
-    fetch(`http://localhost:4000/user/${id}`, {
+    fetch(`http://localhost:4000/user/${props}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +27,7 @@ export const Status = ({ props }) => {
         <div>
           <textarea
             type="text"
-            placeholder={props}
+            placeholder="Say what's on your mind"
             onChange={(e) => setNewStatus(e.target.value)}
             maxLength="25"
           />{" "}
@@ -38,7 +37,6 @@ export const Status = ({ props }) => {
         </div>
       ) : (
         <div>
-          <p>{props}</p>
           <button onClick={showTextBox}>Change status</button>
         </div>
       )}

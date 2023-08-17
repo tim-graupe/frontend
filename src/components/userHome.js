@@ -3,23 +3,26 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Friends } from "./userDash/friendsList";
 import { NavBar } from "./nav";
+import { Status } from "./userDash/status";
+import { NewPost } from "./newPost";
 import { Timeline } from "./userDash/timeline";
-export const UserProfile = () => {
+
+export const UserHome = () => {
   const [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
 
   const getUserProfile = () => {
-    fetch(`http://localhost:4000/user/${id}`, {
-      mode: "cors",
+    fetch(`http://localhost:4000/`, {
+      credentials: "include",
     })
-      .then((response) => response.json())
-      .then((response) => setUser(response));
+      .then((res) => res.json())
+      .then((res) => setUser(res.user));
+    setIsLoading(false);
   };
 
   useEffect(() => {
     getUserProfile();
-    setIsLoading(false);
   }, []);
 
   return (
@@ -28,13 +31,15 @@ export const UserProfile = () => {
         <h2>
           {user.firstName} {user.lastName}
         </h2>
-        <h4>-- {user.status}</h4>
+        <img src={user.profile_pic} alt="profile pic" />
+        <p> {user.status}</p>
       </section>
 
       <h4>Posts</h4>
-      <Timeline />
-
+      <Timeline props={user.posts} />
       <NavBar props={user} />
+      <Status props={user._id} />
+      <NewPost props={user._id} />
     </div>
   );
 };
