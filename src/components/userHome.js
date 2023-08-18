@@ -6,6 +6,7 @@ import { NavBar } from "./nav";
 import { Status } from "./userDash/status";
 import { NewPost } from "./newPost";
 import { Timeline } from "./userDash/timeline";
+import { SearchUser } from "./searchUser";
 
 export const UserHome = () => {
   const [user, setUser] = useState("");
