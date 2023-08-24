@@ -7,6 +7,7 @@ import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
 import { Timeline } from "./components/userDash/timeline";
 import { UserHome } from "./components/userHome";
+import { Profile } from "./components/profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/home" element={<UserHome />} />
         <Route path="/user/:id/new_post" element={<NewPost />} />
         <Route path="/user/:id/posts" element={<Timeline />} />
+        <Route path="/user/:id" element={<Profile />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

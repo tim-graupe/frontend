@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const SearchUser = () => {
   const [searchName, setSearchName] = useState("");
@@ -24,17 +25,22 @@ export const SearchUser = () => {
         id="name-search"
         type="text"
         onChange={(e) => setSearchName(e.target.value)}
+        placeholder="Search for a user"
       />
       <button onClick={handleSearch}>Click</button>
       {results.length >= 1 ? (
         results.map((user) => {
           return (
-            <div className="search-result-user-card">
+            <Link
+              to={`/user/${user._id}`}
+              className="search-result-user-card"
+              key={user._id}
+            >
               <p>
                 <img src={user.profile_pic} alt="profile pic" />{" "}
                 {user.firstName} {user.lastName}
               </p>
-            </div>
+            </Link>
           );
         })
       ) : (

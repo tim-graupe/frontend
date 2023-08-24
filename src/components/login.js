@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import GoogleButton from "react-google-button";
+import { SearchUser } from "./searchUser";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,6 +41,7 @@ export const Login = () => {
 
   return (
     <div className="App">
+      <SearchUser />
       <input
         type="email"
         name="email"

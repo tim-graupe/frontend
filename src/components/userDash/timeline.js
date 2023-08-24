@@ -9,7 +9,7 @@ export const Timeline = ({ props }) => {
         <div>
           {props.map((post) => {
             return (
-              <div className="timeline-post">
+              <div className="timeline-post" key={post.date_posted}>
                 <p key={post.content}>{post.content}</p>
                 <sub>
                   {/* add google icons */}
