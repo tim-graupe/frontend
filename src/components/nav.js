@@ -7,7 +7,7 @@ export const NavBar = ({ props }) => {
       <SearchUser />
 
       <a href="/home">Home</a>
-      <a href={`/profile/${props._id}`}>My profile</a>
+      <a href={`/user/${props._id}`}>My profile</a>
       {/* {props.incomingFriendRequests.length} */}
     </div>
   );

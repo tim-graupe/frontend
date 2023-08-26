@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const SearchUser = () => {
   const [searchName, setSearchName] = useState("");
   const [results, setResults] = useState([]);
-
+  const id = useParams().id;
   useEffect(() => {
     handleSearch();
   }, [searchName]);
+
+  useEffect(() => {
+    setResults("");
+  }, [id]);
 
   const handleSearch = async () => {
     fetch(`http://localhost:4000/search?name=${searchName}`, {
