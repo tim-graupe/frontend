@@ -8,12 +8,25 @@ export const Timeline = ({ props }) => {
       ) : (
         <div>
           {props.map((post) => {
+            let date = new Date(post.date_posted);
+            const options = {
+              weekday: "short",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            };
             return (
               <div className="timeline-post" key={post.date_posted}>
-                <p key={post.content}>{post.content}</p>
+                <img
+                  src={post.pic}
+                  alt="profile pic"
+                  className="profile-pic-post"
+                />
+                <p key={post.date_posted}>{post.content}</p>
                 <sub>
-                  {/* add google icons */}
-                  {post.replies.length} {post.likes.length}
+                  <p>
+                    {post.poster} {date.toLocaleDateString("en-US", options)}
+                  </p>
                 </sub>
               </div>
             );

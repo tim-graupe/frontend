@@ -1,29 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const NewPost = ({ props }) => {
   const [content, setContent] = useState("");
+  const [loggedUser, setLoggedUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
-  const jsonData = {
-    content: content,
-  };
+
+  useEffect(() => {
+    const getUserProfile = () => {
+      fetch(`http://localhost:4000/`, {
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((res) => setLoggedUser(res.user));
+      setIsLoading(false);
+    };
+    getUserProfile();
+  }, []);
 
   function handleClick() {
-    //change id on 13 to props and pass user's _id
-    fetch(`http://localhost:4000/user/${props}/new_post`, {
+    fetch(`http://localhost:4000/user/${id}/new_post`, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(jsonData),
-    }).then((response) => console.log(response));
+      body: JSON.stringify({
+        content: content,
+        poster: loggedUser.firstName + " " + loggedUser.lastName,
+        pic: loggedUser.profile_pic,
+        date: new Date(),
+      }),
+    })
+      .then((response) => console.log(response))
+      .then(setContent(""));
   }
 
   return (
     <div>
       <br></br>
-      <label>Something on your mind?</label>
       <br></br>
       <textarea
         type="text"

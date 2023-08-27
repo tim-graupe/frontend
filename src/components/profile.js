@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import { SearchUser } from "./searchUser";
 import { Bio } from "./userDash/bio";
 import { EditDetails } from "./userDash/editDetails";
-export const Profile = () => {
+import { NewPost } from "./newPost";
+import { Timeline } from "./userDash/timeline";
+
+export const Profile = ({ props }) => {
   const [user, setUser] = useState("");
   const id = useParams().id;
 
@@ -34,8 +37,10 @@ export const Profile = () => {
       </section>
       <SearchUser />
       <h4>Posts</h4>
-      <Bio props={user} />
-      <EditDetails props={user} />
+      <NewPost />
+      <Timeline props={user.posts} />
+      {/* <Bio props={user} />
+      <EditDetails props={user} /> */}
     </div>
   );
 };

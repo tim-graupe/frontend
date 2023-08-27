@@ -40,7 +40,7 @@ export const UserHome = () => {
       <Timeline props={user.posts} />
       <NavBar props={user} />
       <Status props={user._id} />
-      <NewPost props={user._id} />
+      <NewPost props={user} />
     </div>
   );
 };
