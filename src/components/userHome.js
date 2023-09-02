@@ -7,6 +7,7 @@ import { Status } from "./userDash/status";
 import { NewPost } from "./newPost";
 import { Timeline } from "./userDash/timeline";
 import { SearchUser } from "./searchUser";
+import { FriendReqs } from "./userDash/friendReqs";
 
 export const UserHome = () => {
   const [user, setUser] = useState("");
@@ -28,19 +29,21 @@ export const UserHome = () => {
 
   return (
     <div className="user-profile-container">
-      <section className="user-picture-and-name">
+      {/* <section className="user-picture-and-name">
         <h2>
           {user.firstName} {user.lastName}
         </h2>
         <img src={user.profile_pic} alt="profile pic" />
         <p> {user.status}</p>
-      </section>
+      </section> */}
 
       <h4>Posts</h4>
-      <Timeline props={user.posts} />
+      {/* <Timeline props={user.posts} />
       <NavBar props={user} />
-      <Status props={user._id} />
+      <Status props={user._id} /> */}
+
       <NewPost props={user} />
+      {/* <FriendReqs props={"64e0b8863a89c11dcc74e413"} /> */}
     </div>
   );
 };

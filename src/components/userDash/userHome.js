@@ -28,7 +28,7 @@ export const UserHome = () => {
 
   return (
     <div className="user-profile-container">
-      <section className="user-picture-and-name">
+      {/* <section className="user-picture-and-name">
         <h2>
           {user.firstName} {user.lastName}
         </h2>
@@ -40,7 +40,7 @@ export const UserHome = () => {
       <Timeline props={user.posts} />
       <NavBar props={user} />
       <Status props={user._id} />
-      <NewPost props={user._id} />
+      <NewPost props={user._id} /> */}
     </div>
   );
 };

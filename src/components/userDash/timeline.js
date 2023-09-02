@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Timeline = ({ props }) => {
   return (
@@ -16,19 +17,24 @@ export const Timeline = ({ props }) => {
               day: "numeric",
             };
             return (
-              <div className="timeline-post" key={post.date_posted}>
+              <Link
+                to={`/user/${post.id}`}
+                className="timeline-post"
+                key={post.date_posted}
+              >
                 <img
-                  src={post.pic}
+                  src={post.poster.profile_pic}
                   alt="profile pic"
                   className="profile-pic-post"
                 />
                 <p key={post.date_posted}>{post.content}</p>
                 <sub>
                   <p>
-                    {post.poster} {date.toLocaleDateString("en-US", options)}
+                    {post.poster.firstName} {post.poster.lastName}{" "}
                   </p>
+                  {date.toLocaleDateString("en-US", options)}
                 </sub>
-              </div>
+              </Link>
             );
           })}
         </div>

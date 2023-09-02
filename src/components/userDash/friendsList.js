@@ -1,9 +1,10 @@
 import React from "react";
 
-export const Friends = (props) => {
+export const FriendsList = ({ props }) => {
   return (
     <section className="friends-container">
-      <p> You have {props.friends.length} friends.</p>
+      <p>{props.incomingFriendRequests.length}</p>
+      {/* <p> You have {props.friends.length} friends.</p> */}
     </section>
   );
 };

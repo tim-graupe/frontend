@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const NewPost = ({ props }) => {
+export const NewPost = () => {
   const [content, setContent] = useState("");
   const [loggedUser, setLoggedUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [test, settest] = useState(useParams().id);
   const id = useParams().id;
 
   useEffect(() => {
@@ -28,12 +29,12 @@ export const NewPost = ({ props }) => {
       },
       body: JSON.stringify({
         content: content,
-        poster: loggedUser.firstName + " " + loggedUser.lastName,
-        pic: loggedUser.profile_pic,
+        poster: loggedUser._id,
+        id: id,
         date: new Date(),
       }),
     })
-      .then((response) => console.log(response))
+      .then((response) => console.log(loggedUser.firstName))
       .then(setContent(""));
   }
 
