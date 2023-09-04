@@ -5,6 +5,7 @@ import { Bio } from "./userDash/bio";
 import { EditDetails } from "./userDash/editDetails";
 import { NewPost } from "./newPost";
 import { Timeline } from "./userDash/timeline";
+import { FriendReqs } from "./userDash/friendReqs";
 
 export const Profile = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,14 @@ export const Profile = ({ props }) => {
   const id = useParams().id;
 
   useEffect(() => {
+    const getUser = () => {
+      fetch(`http://localhost:4000/`, {
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((res) => setLoggedUser(res.user));
+    };
+
     const getUserPosts = () => {
       fetch(`http://localhost:4000/user/${id}/posts`, {
         credentials: "include",
@@ -23,6 +32,7 @@ export const Profile = ({ props }) => {
         .then((res) => setPosts(res));
       setIsLoading(false);
     };
+    getUser();
     getUserPosts();
   }, []);
 
@@ -38,7 +48,7 @@ export const Profile = ({ props }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            sender: loggedUser._id,
+            id: loggedUser._id,
           }),
         }
       );
@@ -71,15 +81,17 @@ export const Profile = ({ props }) => {
         <h2>
           {user.firstName} {user.lastName}
         </h2>
-        {/* <img src={user.profile_pic} alt="profile pic" />
-        <button onClick={addFriend}>Add friend</button> */}
+        {/* <img src={user.profile_pic} alt="profile pic" />  */}
+
+        <button onClick={() => addFriend(id)}>Add friend</button>
+        <FriendReqs />
         {/* <p> {user.status}</p> */}
       </section>
       {/* <SearchUser /> */}
-      <h4>Posts</h4>
+      {/* <h4>Posts</h4>
       <NewPost />
-
-      <Timeline props={posts} />
+    
+      <Timeline props={posts} /> */}
       {/* <Bio props={user} />
       <EditDetails props={user} /> */}
     </div>

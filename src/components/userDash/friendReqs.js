@@ -16,9 +16,16 @@ export const FriendReqs = ({ props }) => {
   }, []);
 
   const acceptFriend = (id) => {
-    console.log(id);
     fetch(`http://localhost:4000/acceptFriendReq/${id}`, {
       credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
     });
   };
   return (
@@ -36,7 +43,7 @@ export const FriendReqs = ({ props }) => {
             </p>
             <button
               onClick={() => {
-                acceptFriend(friend._id);
+                acceptFriend(friend.sender._id);
               }}
             >
               Accept
