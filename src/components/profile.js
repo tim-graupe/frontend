@@ -171,6 +171,10 @@ export const Profile = ({ props }) => {
                   onChange={(e) => setComment(e.target.value)}
                 />
                 <button onClick={() => commentOnPost(post._id)}>Comment</button>
+                <br></br>
+                <sub>{post.comments.length} comments</sub>
+                <br></br>
+                <sub>{post.likes.length} likes</sub>
               </div>
             );
           })}
