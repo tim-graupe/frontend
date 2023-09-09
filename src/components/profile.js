@@ -6,13 +6,14 @@ import { EditDetails } from "./userDash/editDetails";
 import { NewPost } from "./newPost";
 import { Timeline } from "./userDash/timeline";
 import { FriendReqs } from "./userDash/friendReqs";
+import { Link } from "react-router-dom";
 
 export const Profile = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loggedUser, setLoggedUser] = useState("");
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
-
+  const [comment, setComment] = useState("");
   const id = useParams().id;
 
   useEffect(() => {
@@ -79,6 +80,39 @@ export const Profile = ({ props }) => {
     fetchUser();
   }, [id]);
 
+  const likePost = (postId) => {
+    fetch(`http://localhost:4000/likePost/${postId}`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: postId,
+        // date: new Date(),
+      }),
+    });
+    // .then((response) => console.log(loggedUser.firstName))
+  };
+
+  const commentOnPost = (postId) => {
+    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: postId,
+        comment: comment,
+        // date: new Date(),
+      }),
+    });
+    // .then((response) => console.log(loggedUser.firstName))
+  };
+
   return (
     <div className="profile-container">
       <section className="user-picture-and-name">
@@ -96,9 +130,52 @@ export const Profile = ({ props }) => {
       {/* <h4>Posts</h4>
       <NewPost />
     
-      <Timeline props={posts} /> */}
+       */}
       {/* <Bio props={user} />
       <EditDetails props={user} /> */}
+      {isLoading ? (
+        <p>Loading please wait...</p>
+      ) : (
+        <div>
+          {posts.map((post) => {
+            let date = new Date(post.date_posted);
+            const options = {
+              weekday: "short",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            };
+            return (
+              <div
+                className="timeline-individual-comment-card"
+                key={post.date_posted}
+              >
+                <Link to={`/user/${post.id}`} className="timeline-post">
+                  <img
+                    src={post.poster.profile_pic}
+                    alt="profile pic"
+                    className="profile-pic-post"
+                  />
+                  <p key={post.date_posted}>{post.content}</p>
+                  <sub>
+                    <p>
+                      {post.poster.firstName} {post.poster.lastName}{" "}
+                    </p>
+                    {date.toLocaleDateString("en-US", options)}
+                  </sub>
+                </Link>
+                <button onClick={() => likePost(post._id)}>Like</button>
+                <input
+                  id="comment"
+                  type="text"
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button onClick={() => commentOnPost(post._id)}>Comment</button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

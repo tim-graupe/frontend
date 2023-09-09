@@ -36,7 +36,7 @@ export const UserHome = () => {
         <img src={user.profile_pic} alt="profile pic" />
         <p> {user.status}</p>
       </section> */}
-      <Timeline props={user._id} />
+      {/* <Timeline props={user._id} /> */}
       <h4>Posts</h4>
       {/* <Timeline props={user.posts} />
       <NavBar props={user} />

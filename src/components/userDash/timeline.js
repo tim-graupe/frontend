@@ -3,24 +3,40 @@ import { Link } from "react-router-dom";
 
 export const Timeline = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [friendsPosts, setFriendsPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const getFriendsPosts = () => {
+    const getPosts = () => {
       if (props) {
-        fetch(`http://localhost:4000/getFriendsPosts/${props}`, {
+        fetch(`http://localhost:4000/user/${props}/posts`, {
           credentials: "include",
         })
           .then((res) => res.json())
           .then((res) => {
-            setFriendsPosts(res);
+            setPosts(res);
             setIsLoading(false);
           });
       }
     };
-    getFriendsPosts();
+    getPosts();
     setIsLoading(false);
   }, [props]);
+
+  const likePost = (postId) => {
+    console.log(`http://localhost:4000/post/${postId}/`);
+    fetch(`http://localhost:4000/post/${postId}/`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: postId,
+        // date: new Date(),
+      }),
+    });
+    // .then((response) => console.log(loggedUser.firstName))
+  };
 
   return (
     <div className="timeline-container">
@@ -28,7 +44,7 @@ export const Timeline = ({ props }) => {
         <p>Loading please wait...</p>
       ) : (
         <div>
-          {/* {friendsPosts.map((post) => {
+          {props.map((post) => {
             let date = new Date(post.date_posted);
             const options = {
               weekday: "short",
@@ -37,26 +53,28 @@ export const Timeline = ({ props }) => {
               day: "numeric",
             };
             return (
-              <Link
-                to={`/user/${post.id}`}
-                className="timeline-post"
+              <div
+                className="timeline-individual-comment-card"
                 key={post.date_posted}
               >
-                <img
-                  src={post.poster.profile_pic}
-                  alt="profile pic"
-                  className="profile-pic-post"
-                />
-                <p key={post.date_posted}>{post.content}</p>
-                <sub>
-                  <p>
-                    {post.poster.firstName} {post.poster.lastName}{" "}
-                  </p>
-                  {date.toLocaleDateString("en-US", options)}
-                </sub>
-              </Link>
+                <Link to={`/user/${post.user._id}`} className="timeline-post">
+                  <img
+                    src={post.poster.profile_pic}
+                    alt="profile pic"
+                    className="profile-pic-post"
+                  />
+                  <p key={post.date_posted}>{post.content}</p>
+                  <sub>
+                    <p>
+                      {post.poster.firstName} {post.poster.lastName}{" "}
+                    </p>
+                    {date.toLocaleDateString("en-US", options)}
+                  </sub>
+                </Link>
+                <button onClick={() => console.log(post.user)}>Like</button>
+              </div>
             );
-          })} */}
+          })}
         </div>
       )}
     </div>
