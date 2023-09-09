@@ -49,6 +49,20 @@ export const Profile = ({ props }) => {
       }),
     });
   };
+
+  const deleteFriend = () => {
+    fetch(`http://localhost:4000/deleteFriend/${id}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: loggedUser._id,
+      }),
+    });
+  };
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -74,7 +88,7 @@ export const Profile = ({ props }) => {
         {/* <img src={user.profile_pic} alt="profile pic" />  */}
         <NewPost />
         <button onClick={addFriend}>Add friend</button>
-
+        <button onClick={deleteFriend}>Delete Friend</button>
         <FriendReqs />
         {/* <p> {user.status}</p> */}
       </section>
