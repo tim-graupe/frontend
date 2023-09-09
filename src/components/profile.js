@@ -36,29 +36,19 @@ export const Profile = ({ props }) => {
     getUserPosts();
   }, []);
 
-  const addFriend = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:4000/sendFriendReq/${id}`,
-        {
-          credentials: "include",
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: loggedUser._id,
-          }),
-        }
-      );
-      const data = await response.json();
-      setUser(data);
-    } catch (error) {
-      console.error("Error fetching user:", error);
-    }
+  const addFriend = () => {
+    fetch(`http://localhost:4000/sendFriendReq/${id}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: loggedUser._id,
+      }),
+    });
   };
-
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -82,8 +72,9 @@ export const Profile = ({ props }) => {
           {user.firstName} {user.lastName}
         </h2>
         {/* <img src={user.profile_pic} alt="profile pic" />  */}
+        <NewPost />
+        <button onClick={addFriend}>Add friend</button>
 
-        <button onClick={() => addFriend(id)}>Add friend</button>
         <FriendReqs />
         {/* <p> {user.status}</p> */}
       </section>

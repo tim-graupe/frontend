@@ -20,7 +20,7 @@ export const NewPost = () => {
     getUserProfile();
   }, []);
 
-  function handleClick() {
+  function handleClick(req, res) {
     fetch(`http://localhost:4000/user/${id}/new_post`, {
       method: "POST",
       mode: "cors",
@@ -34,7 +34,7 @@ export const NewPost = () => {
         date: new Date(),
       }),
     })
-      .then((response) => console.log(loggedUser.firstName))
+      // .then((response) => console.log(loggedUser.firstName))
       .then(setContent(""));
   }
 
