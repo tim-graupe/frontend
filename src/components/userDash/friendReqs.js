@@ -32,6 +32,21 @@ export const FriendReqs = ({ props }) => {
       }),
     });
   };
+
+  const rejectFriend = (friendRequest) => {
+    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        RequestingFriendsId: friendRequest,
+        // reqId: reqId
+      }),
+    });
+  };
   return (
     <div className="friend-reqs-list">
       {friendReqs.map((friendRequest) => {
@@ -47,11 +62,17 @@ export const FriendReqs = ({ props }) => {
             </p>
             <button
               onClick={() => {
-                console.log(friendRequest);
                 acceptFriend(friendRequest);
               }}
             >
               Accept
+            </button>
+            <button
+              onClick={() => {
+                rejectFriend(friendRequest);
+              }}
+            >
+              Reject
             </button>
           </div>
         );

@@ -50,3 +50,99 @@
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+
+.timeline-individual-comment-card {
+    margin-bottom: 20px;
+    /* Add spacing between individual comment cards */
+    padding: 10px;
+    border: 1px solid #ddd;
+    /* Add a border to separate comments */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    /* Background color for comment cards */
+}
+
+.timeline-post {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    /* Text color for the post content */
+}
+
+.profile-pic-post {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    /* Spacing between profile picture and content */
+}
+
+.timeline-post p {
+    margin: 0;
+}
+
+sub {
+    font-size: 14px;
+    /* Adjust the font size for the subtext */
+    color: #777;
+    /* Text color for the subtext */
+}
+
+button {
+    background-color: #3498db;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    /* Spacing between buttons */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+    /* Hover background color */
+}
+
+#comment {
+    width: 100%;
+    /* Make the input field expand to the container's width */
+    padding: 5px;
+    margin-top: 10px;
+    /* Spacing between input field and buttons */
+}
+
+@media (max-width: 767px) {
+    .timeline-individual-comment-card {
+        padding: 8px;
+        /* Reduce padding for mobile */
+    }
+
+    .profile-pic-post {
+        width: 30px;
+        height: 30px;
+    }
+
+    .timeline-post p {
+        font-size: 14px;
+        /* Adjust font size for mobile */
+    }
+
+    sub {
+        font-size: 12px;
+        /* Adjust subtext font size for mobile */
+    }
+
+    button {
+        padding: 3px 8px;
+        /* Adjust button padding for mobile */
+    }
+
+    #comment {
+        margin-top: 8px;
+        /* Adjust margin for mobile */
+    }
+}
