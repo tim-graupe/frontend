@@ -73,7 +73,7 @@ export const FriendsFeed = ({ props }) => {
                 className="timeline-individual-comment-card"
                 key={post.date_posted}
               >
-                <Link to={`/user/${post.id}`} className="timeline-post">
+                <Link to={`/user/${post._id}`} className="timeline-post">
                   <img
                     src={post.poster.profile_pic}
                     alt="profile pic"

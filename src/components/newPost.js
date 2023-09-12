@@ -5,7 +5,6 @@ export const NewPost = () => {
   const [content, setContent] = useState("");
   const [loggedUser, setLoggedUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [test, settest] = useState(useParams().id);
   const id = useParams().id;
 
   useEffect(() => {
@@ -47,6 +46,7 @@ export const NewPost = () => {
         name="content"
         maxLength="2000"
         onChange={(e) => setContent(e.target.value)}
+        placeholder="Enter new post"
       ></textarea>
       <button
         onClick={() => {

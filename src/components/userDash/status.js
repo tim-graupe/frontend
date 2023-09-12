@@ -16,6 +16,7 @@ export const Status = ({ props }) => {
       },
       body: JSON.stringify({
         content: newStatus,
+        user: props,
       }),
     });
     setTextbox(!textbox);

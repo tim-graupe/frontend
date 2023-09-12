@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import "./style.css";
 import { useParams } from "react-router-dom";
 
-export const EditDetails = ({ props }) => {
-  const [firstName, setFirstName] = useState(props.firstName);
-  const [lastName, setLastName] = useState(props.lastName);
-  const [relationship, setRelationshipStatus] = useState(props.relationship);
-  const [politics, setPolitics] = useState(props.politics);
-  const [high_school, setHighSchool] = useState(props.high_school);
-  const [college, setCollege] = useState(props.college);
-  const [current_city, setCurrentCity] = useState(props.current_city);
-  const [home_town, setHomeTown] = useState(props.home_town);
+export const EditDetails = () => {
+  const [firstName, setFirstName] = useState(firstName);
+  const [lastName, setLastName] = useState(lastName);
+  const [relationship, setRelationshipStatus] = useState(relationship);
+  const [politics, setPolitics] = useState(politics);
+  const [high_school, setHighSchool] = useState(high_school);
+  const [college, setCollege] = useState(college);
+  const [current_city, setCurrentCity] = useState(current_city);
+  const [home_town, setHomeTown] = useState(home_town);
   const id = useParams().id;
 
   const handleFormSubmit = (event) => {

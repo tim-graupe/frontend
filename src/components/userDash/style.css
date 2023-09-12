@@ -1,148 +1,18 @@
-.profile-form-container {
-    max-width: 400px;
+/* Default styling for mobile */
+.profile-container {
+    width: 100%;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.profile-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.profile-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.profile-form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.profile-form button:hover {
-    background-color: #0056b3;
-}
-
-.select-container {
-    margin-bottom: 10px;
-}
-
-.select-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.select-container select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.timeline-individual-comment-card {
-    margin-bottom: 20px;
-    /* Add spacing between individual comment cards */
+    /* Horizontally center the div */
     padding: 10px;
-    border: 1px solid #ddd;
-    /* Add a border to separate comments */
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    /* Background color for comment cards */
+    /* Add padding as needed */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
 }
 
-.timeline-post {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    /* Text color for the post content */
-}
-
-.profile-pic-post {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    /* Spacing between profile picture and content */
-}
-
-.timeline-post p {
-    margin: 0;
-}
-
-sub {
-    font-size: 14px;
-    /* Adjust the font size for the subtext */
-    color: #777;
-    /* Text color for the subtext */
-}
-
-button {
-    background-color: #3498db;
-    /* Button background color */
-    color: #fff;
-    /* Button text color */
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    margin-right: 10px;
-    /* Spacing between buttons */
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #2980b9;
-    /* Hover background color */
-}
-
-#comment {
-    width: 100%;
-    /* Make the input field expand to the container's width */
-    padding: 5px;
-    margin-top: 10px;
-    /* Spacing between input field and buttons */
-}
-
-@media (max-width: 767px) {
-    .timeline-individual-comment-card {
-        padding: 8px;
-        /* Reduce padding for mobile */
-    }
-
-    .profile-pic-post {
-        width: 30px;
-        height: 30px;
-    }
-
-    .timeline-post p {
-        font-size: 14px;
-        /* Adjust font size for mobile */
-    }
-
-    sub {
-        font-size: 12px;
-        /* Adjust subtext font size for mobile */
-    }
-
-    button {
-        padding: 3px 8px;
-        /* Adjust button padding for mobile */
-    }
-
-    #comment {
-        margin-top: 8px;
-        /* Adjust margin for mobile */
+/* Media query for desktop screens with a minimum width of 768px */
+@media screen and (min-width: 768px) {
+    .profile-container {
+        width: 66%;
+        /* Set the width to 66% for desktop */
     }
 }

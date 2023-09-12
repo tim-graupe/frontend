@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import "../styles/navBar.css";
 export const SearchUser = () => {
   const [searchName, setSearchName] = useState("");
   const [results, setResults] = useState([]);

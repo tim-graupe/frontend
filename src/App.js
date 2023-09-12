@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
 import { Timeline } from "./components/userDash/timeline";
-import { UserHome } from "./components/userHome";
+import { UserHome } from "./components/userDash/userHome";
 import { Profile } from "./components/profile";
-
+import { EditDetails } from "./components/userDash/editDetails";
 function App() {
   return (
     <BrowserRouter className="App">

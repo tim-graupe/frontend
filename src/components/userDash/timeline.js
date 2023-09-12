@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export const Timeline = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     const getPosts = () => {
@@ -21,6 +22,23 @@ export const Timeline = ({ props }) => {
     getPosts();
     setIsLoading(false);
   }, [props]);
+
+  const commentOnPost = (postId) => {
+    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: postId,
+        comment: comment,
+        // date: new Date(),
+      }),
+    });
+    // .then((response) => console.log(loggedUser.firstName))
+  };
 
   const likePost = (postId) => {
     console.log(`http://localhost:4000/post/${postId}/`);
@@ -57,21 +75,27 @@ export const Timeline = ({ props }) => {
                 className="timeline-individual-comment-card"
                 key={post.date_posted}
               >
-                <Link to={`/user/${post.user._id}`} className="timeline-post">
+                <Link to={`/user/${post.poster._id}`} className="timeline-post">
                   <img
                     src={post.poster.profile_pic}
                     alt="profile pic"
                     className="profile-pic-post"
-                  />
-                  <p key={post.date_posted}>{post.content}</p>
-                  <sub>
-                    <p>
-                      {post.poster.firstName} {post.poster.lastName}{" "}
-                    </p>
-                    {date.toLocaleDateString("en-US", options)}
-                  </sub>
+                  />{" "}
+                  {post.poster.firstName} {post.poster.lastName}
+                  <sub></sub>
                 </Link>
-                <button onClick={() => console.log(post.user)}>Like</button>
+                <p>{post.content}</p>
+                <input
+                  id="comment"
+                  type="text"
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button onClick={() => commentOnPost(post._id)}>Comment</button>
+                <button onClick={() => likePost(post._id)}>Like</button>
+                <br></br>
+                <sub>{post.comments.length} comments</sub>{" "}
+                <sub>{post.likes.length} likes</sub>{" "}
+                <sub> {date.toLocaleDateString("en-US", options)}</sub>
               </div>
             );
           })}

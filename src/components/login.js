@@ -6,8 +6,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  // const [user, setUser] = useState(localStorage.getItem("user")._id);
-  // const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isAuth"));
+
   const jsonData = {
     email: email,
     password: password,
@@ -41,7 +40,6 @@ export const Login = () => {
 
   return (
     <div className="App">
-      <SearchUser />
       <input
         type="email"
         name="email"
@@ -56,7 +54,6 @@ export const Login = () => {
       />
       <button onClick={submit}>Login</button> <br></br>
       <GoogleButton onClick={handleSignInGoogle} />
-      {message}
     </div>
   );
 };

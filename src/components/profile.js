@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { SearchUser } from "./searchUser";
 import { Bio } from "./userDash/bio";
-import { EditDetails } from "./userDash/editDetails";
 import { NewPost } from "./newPost";
+import { FriendsList } from "./userDash/friendsList";
 import { Timeline } from "./userDash/timeline";
-import { FriendReqs } from "./userDash/friendReqs";
-import { Link } from "react-router-dom";
-
+import { NavBar } from "./nav";
+import "../styles/profile.css";
 export const Profile = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loggedUser, setLoggedUser] = useState("");
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
-  const [comment, setComment] = useState("");
   const id = useParams().id;
 
   useEffect(() => {
@@ -35,7 +32,7 @@ export const Profile = ({ props }) => {
     };
     getUser();
     getUserPosts();
-  }, []);
+  }, [id]);
 
   const addFriend = () => {
     fetch(`http://localhost:4000/sendFriendReq/${id}`, {
@@ -80,105 +77,47 @@ export const Profile = ({ props }) => {
     fetchUser();
   }, [id]);
 
-  const likePost = (postId) => {
-    fetch(`http://localhost:4000/likePost/${postId}`, {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        postId: postId,
-        // date: new Date(),
-      }),
-    });
-    // .then((response) => console.log(loggedUser.firstName))
-  };
-
-  const commentOnPost = (postId) => {
-    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        postId: postId,
-        comment: comment,
-        // date: new Date(),
-      }),
-    });
-    // .then((response) => console.log(loggedUser.firstName))
-  };
-
   return (
     <div className="profile-container">
-      <section className="user-picture-and-name">
-        <h2>
-          {user.firstName} {user.lastName}
-        </h2>
-        {/* <img src={user.profile_pic} alt="profile pic" />  */}
-        <NewPost />
-        <button onClick={addFriend}>Add friend</button>
-        <button onClick={deleteFriend}>Delete Friend</button>
-        <FriendReqs />
-        {/* <p> {user.status}</p> */}
+      <NavBar props={loggedUser} />
+      <section className="profile-left-col">
+        <div className="user-picture-and-name">
+          <h2>
+            {user.firstName} {user.lastName}
+          </h2>
+          <p> {user.status}</p>
+          {/* <NewPost /> */}
+          <img
+            src={user.profile_pic}
+            alt="profile pic"
+            className="main-profile-pic"
+          />
+
+          {loggedUser._id === id ? (
+            <div></div>
+          ) : (
+            <div className="friend-btns">
+              <button className="friend-btns" onClick={addFriend}>
+                Add friend
+              </button>
+              <button className="friend-btns" onClick={deleteFriend}>
+                Delete Friend
+              </button>
+            </div>
+          )}
+        </div>
+        <FriendsList props={user.friends} />
       </section>
-      {/* <SearchUser /> */}
-      {/* <h4>Posts</h4>
-      <NewPost />
-    
-       */}
-      {/* <Bio props={user} />
-      <EditDetails props={user} /> */}
+
+      {/* <EditDetails props={user} /> */}
       {isLoading ? (
         <p>Loading please wait...</p>
       ) : (
-        <div>
-          {posts.map((post) => {
-            let date = new Date(post.date_posted);
-            const options = {
-              weekday: "short",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            };
-            return (
-              <div
-                className="timeline-individual-comment-card"
-                key={post.date_posted}
-              >
-                <Link to={`/user/${post.id}`} className="timeline-post">
-                  <img
-                    src={post.poster.profile_pic}
-                    alt="profile pic"
-                    className="profile-pic-post"
-                  />
-                  <p key={post.date_posted}>{post.content}</p>
-                  <sub>
-                    <p>
-                      {post.poster.firstName} {post.poster.lastName}{" "}
-                    </p>
-                    {date.toLocaleDateString("en-US", options)}
-                  </sub>
-                </Link>
-                <button onClick={() => likePost(post._id)}>Like</button>
-                <input
-                  id="comment"
-                  type="text"
-                  onChange={(e) => setComment(e.target.value)}
-                />
-                <button onClick={() => commentOnPost(post._id)}>Comment</button>
-                <br></br>
-                <sub>{post.comments.length} comments</sub>
-                <br></br>
-                <sub>{post.likes.length} likes</sub>
-              </div>
-            );
-          })}
-        </div>
+        <section className="profile-timeline-col">
+          <Bio props={user} />
+          <h1>{user.firstName}'s Timeline</h1>
+          <Timeline props={posts} />
+        </section>
       )}
     </div>
   );

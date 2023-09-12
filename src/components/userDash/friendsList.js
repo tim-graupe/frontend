@@ -2,23 +2,28 @@ import React from "react";
 
 export const FriendsList = ({ props }) => {
   return (
-    <section className="friends-container">
-      <p>Friends</p>
-      {props.map((friend) => {
-        return (
-          <div className="dashboard-friend-container">
-            <img
-              src={friend.profile_pic}
-              alt="profile-pic"
-              className="dashboard-friend-container-profile-pic"
-            />
+    <div className="friends-container">
+      {!props ? (
+        <p>Loading....</p>
+      ) : (
+        <div className="friends">
+          <p>Friends ({props.length})</p>
 
-            <p>
-              {friend.firstName} {friend.lastName}
-            </p>
-          </div>
-        );
-      })}
-    </section>
+          {props.map((friend) => {
+            <div className="dashboard-friend-container">
+              <img
+                src={friend.profile_pic}
+                alt="profile-pic"
+                className="friends-box-profile-pic "
+              />
+
+              <p>
+                {friend.firstName} {friend.lastName}
+              </p>
+            </div>;
+          })}
+        </div>
+      )}
+    </div>
   );
 };
