@@ -85,7 +85,6 @@ export const Profile = ({ props }) => {
           <h2>
             {user.firstName} {user.lastName}
           </h2>
-          <p> {user.status}</p>
           {/* <NewPost /> */}
           <img
             src={user.profile_pic}
@@ -109,7 +108,6 @@ export const Profile = ({ props }) => {
         <FriendsList props={user.friends} />
       </section>
 
-      {/* <EditDetails props={user} /> */}
       {isLoading ? (
         <p>Loading please wait...</p>
       ) : (

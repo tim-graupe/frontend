@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { Friends, FriendsList } from "./userDash/friendsList";
 import { NavBar } from "../nav";
-import { Status } from "./status";
 import { NewPost } from "../newPost";
 import { Timeline } from "./timeline";
 import { SearchUser } from "../searchUser";
@@ -43,9 +42,6 @@ export const UserHome = () => {
   return (
     <div className="user-home-friends-feed-container">
       <NavBar props={user} />
-      <p> {user.status}</p>
-
-      <Status props={user._id} />
       {/* <FriendReqs props={user} /> */}
       <FriendsFeed props={user._id} />
       {/* <FriendsList props={friends} /> */}

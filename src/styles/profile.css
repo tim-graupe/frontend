@@ -52,8 +52,9 @@
 }
 
 .timeline-individual-comment-card,
+.friends-container,
 .bio-container {
-    margin-bottom: 20px;
+    /* margin-left: 5px; */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -74,6 +75,16 @@
     border-radius: 50%;
     margin-right: 10px;
 }
+
+.friends {
+    list-style-type: none;
+}
+
+.friend-list-friend-container {
+    border-radius: 12px;
+    text-align: center;
+}
+
 
 .main-profile-pic {
     width: 100%;
