@@ -10,6 +10,7 @@ import { UserHome } from "./components/userDash/userHome";
 import { Profile } from "./components/profile";
 import { EditDetails } from "./components/userDash/editDetails";
 import { CreateGroup } from "./components/actions/createGroup";
+import { GroupPage } from "./components/showGroup";
 function App() {
   return (
     <BrowserRouter className="App">
@@ -22,6 +23,7 @@ function App() {
         <Route path="/user/:id/posts" element={<Timeline />} />
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/createGroup" element={<CreateGroup />} />
+        <Route path="/group/:id" element={<GroupPage />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

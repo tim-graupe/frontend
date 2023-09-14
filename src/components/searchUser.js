@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useFetcher, useParams } from "react-router-dom";
 import "../styles/navBar.css";
 export const SearchUser = () => {
-  const [searchName, setSearchName] = useState("");
+  const [searchName, setSearchName] = useState(null);
   const [results, setResults] = useState([]);
   const id = useParams().id;
   useEffect(() => {
@@ -28,28 +28,38 @@ export const SearchUser = () => {
       <input
         id="name-search"
         type="text"
+        value={searchName}
         onChange={(e) => setSearchName(e.target.value)}
         placeholder="Search for a user"
       />
-      <button onClick={handleSearch}>Click</button>
-      {results.length >= 1 ? (
-        results.map((user) => {
-          return (
-            <Link
-              to={`/user/${user._id}`}
-              className="search-result-user-card"
-              key={user._id}
-            >
+      <button onClick={handleSearch}>Search</button>
+      <div className="search-results">
+        {results.user && (
+          <Link
+            to={`/user/${results.user._id}`}
+            className="search-result-user-card"
+            key={results.user._id}
+          >
+            <div className="user-card">
+              <img src={results.user.profile_pic} alt="profile pic" />
               <p>
-                <img src={user.profile_pic} alt="profile pic" />{" "}
-                {user.firstName} {user.lastName}
+                {results.user.firstName} {results.user.lastName}
               </p>
-            </Link>
-          );
-        })
-      ) : (
-        <p></p>
-      )}
+            </div>
+          </Link>
+        )}
+        {results.group && (
+          <Link
+            to={`/group/${results.group._id}`}
+            className="search-result-user-card"
+            key={results.group._id}
+          >
+            <div className="user-card">
+              <p>{results.group.name}</p>
+            </div>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

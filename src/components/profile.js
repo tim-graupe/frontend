@@ -85,7 +85,6 @@ export const Profile = ({ props }) => {
           <h2>
             {user.firstName} {user.lastName}
           </h2>
-          {/* <NewPost /> */}
           <img
             src={user.profile_pic}
             alt="profile pic"
@@ -114,6 +113,7 @@ export const Profile = ({ props }) => {
         <section className="profile-timeline-col">
           <Bio props={user} />
           <h1>{user.firstName}'s Timeline</h1>
+          {/* <NewPost /> */}
           <Timeline props={posts} />
         </section>
       )}
