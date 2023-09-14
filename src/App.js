@@ -9,6 +9,7 @@ import { Timeline } from "./components/userDash/timeline";
 import { UserHome } from "./components/userDash/userHome";
 import { Profile } from "./components/profile";
 import { EditDetails } from "./components/userDash/editDetails";
+import { CreateGroup } from "./components/actions/createGroup";
 function App() {
   return (
     <BrowserRouter className="App">
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user/:id/new_post" element={<NewPost />} />
         <Route path="/user/:id/posts" element={<Timeline />} />
         <Route path="/user/:id" element={<Profile />} />
+        <Route path="/createGroup" element={<CreateGroup />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
