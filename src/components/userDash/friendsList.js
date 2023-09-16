@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/profile.css";
 export const FriendsList = ({ props }) => {
   return (
-    <div className="friends-container">
+    <div>
       {!props ? (
         <p>Loading....</p>
       ) : (

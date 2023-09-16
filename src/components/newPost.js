@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import "../styles/posts.css";
 export const NewPost = () => {
   const [content, setContent] = useState("");
   const [loggedUser, setLoggedUser] = useState("");
@@ -32,16 +32,27 @@ export const NewPost = () => {
         id: id,
         date: new Date(),
       }),
-    })
-      // .then((response) => console.log(loggedUser.firstName))
-      .then(setContent(""));
+    }).then(setContent(""));
+  }
+
+  function showFloatingMessage(e) {
+    const message = document.getElementById("post-sent-message");
+    message.classList.remove("hide");
+    const buttonRect = e.target.getBoundingClientRect();
+    message.style.top = `${buttonRect.top}px`;
+    message.style.left = `${buttonRect.left}px`;
+
+    setTimeout(() => {
+      message.classList.add("hide");
+    }, 2000);
   }
 
   return (
-    <div>
+    <div className="post-container">
       <br></br>
       <br></br>
       <textarea
+        className="new-post-text-area"
         type="text"
         name="content"
         maxLength="2000"
@@ -49,12 +60,16 @@ export const NewPost = () => {
         placeholder="Enter new post"
       ></textarea>
       <button
-        onClick={() => {
+        onClick={(e) => {
           handleClick();
+          showFloatingMessage(e);
         }}
       >
         Submit
       </button>
+      <div id="post-sent-message" className="post-sent-message hide">
+        Post sent!
+      </div>
     </div>
   );
 };

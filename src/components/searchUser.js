@@ -22,6 +22,12 @@ export const SearchUser = () => {
       .then((response) => response.json())
       .then((response) => setResults(response));
   };
+  useEffect(() => {
+    const searchResultsDiv = document.querySelector(".search-results");
+    if (searchResultsDiv) {
+      searchResultsDiv.style.display = searchName === "" ? "none" : "";
+    }
+  }, [searchName]);
 
   return (
     <div id="search-container">

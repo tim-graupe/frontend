@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Bio } from "./userDash/bio";
-import { NewPost } from "./newPost";
 import { FriendsList } from "./userDash/friendsList";
 import { Timeline } from "./userDash/timeline";
 import { NavBar } from "./nav";
-import "../styles/profile.css";
+import { NewPost } from "./newPost";
+// import "../styles/profile.css";
 import { GroupList } from "./profileGroupList";
 export const Profile = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -114,7 +114,7 @@ export const Profile = ({ props }) => {
         <section className="profile-timeline-col">
           <Bio props={user} />
           <h1>{user.firstName}'s Timeline</h1>
-          {/* <NewPost /> */}
+          <NewPost />
           <Timeline props={posts} />
         </section>
       )}
