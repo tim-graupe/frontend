@@ -151,27 +151,9 @@ button:hover {
     float: left;
     width: 10%;
     height: 200px;
-    background-color: red;
 }
 
 .profile-timeline-col {
     float: left;
     width: 60%;
-}
-
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-
-    /* Reduce spacing and adjust flex direction for stacking on mobile */
-    .profile-container {
-        padding: 10px;
-        flex-direction: column-reverse;
-        align-items: flex-start;
-    }
-
-    /* Adjust the width of columns to take 100% width */
-    .profile-left-col,
-    .profile-timeline-col {
-        width: 100%;
-    }
 }

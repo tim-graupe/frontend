@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useFetcher, useParams } from "react-router-dom";
 import "../styles/navBar.css";
 export const SearchUser = () => {
-  const [searchName, setSearchName] = useState(null);
+  const [searchName, setSearchName] = useState("");
   const [results, setResults] = useState([]);
   const id = useParams().id;
   useEffect(() => {
@@ -30,7 +30,7 @@ export const SearchUser = () => {
         type="text"
         value={searchName}
         onChange={(e) => setSearchName(e.target.value)}
-        placeholder="Search for a user"
+        placeholder="Search for a user or group"
       />
       <button onClick={handleSearch}>Search</button>
       <div className="search-results">

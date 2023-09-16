@@ -6,6 +6,7 @@ import { FriendsList } from "./userDash/friendsList";
 import { Timeline } from "./userDash/timeline";
 import { NavBar } from "./nav";
 import "../styles/profile.css";
+import { GroupList } from "./profileGroupList";
 export const Profile = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loggedUser, setLoggedUser] = useState("");
@@ -117,6 +118,10 @@ export const Profile = ({ props }) => {
           <Timeline props={posts} />
         </section>
       )}
+
+      <section className="profile-right-col">
+        <GroupList props={user} />
+      </section>
     </div>
   );
 };

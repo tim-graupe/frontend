@@ -10,7 +10,7 @@ import { UserHome } from "./components/userDash/userHome";
 import { Profile } from "./components/profile";
 import { EditDetails } from "./components/userDash/editDetails";
 import { CreateGroup } from "./components/actions/createGroup";
-import { GroupPage } from "./components/showGroup";
+import { GroupPage } from "./components/groupPage";
 function App() {
   return (
     <BrowserRouter className="App">
