@@ -1,39 +1,54 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const EditDetails = () => {
-  const [firstName, setFirstName] = useState(firstName);
-  const [lastName, setLastName] = useState(lastName);
-  const [relationship, setRelationshipStatus] = useState(relationship);
-  const [politics, setPolitics] = useState(politics);
-  const [high_school, setHighSchool] = useState(high_school);
-  const [college, setCollege] = useState(college);
-  const [current_city, setCurrentCity] = useState(current_city);
-  const [home_town, setHomeTown] = useState(home_town);
+export const EditDetails = ({ props, toggleEdit }) => {
+  const [firstName, setFirstName] = useState(props.firstName);
+  const [lastName, setLastName] = useState(props.lastName);
+  const [relationship, setRelationshipStatus] = useState(props.relationship);
+  const [politics, setPolitics] = useState(props.politics);
+  const [high_school, setHighSchool] = useState(props.high_school);
+  const [college, setCollege] = useState(props.college);
+  const [current_city, setCurrentCity] = useState(props.current_city);
+  const [home_town, setHomeTown] = useState(props.home_town);
   const id = useParams().id;
+  const [error, setError] = useState(null);
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    fetch(`http://localhost:4000/user/${id}/bio`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        relationship,
-        politics,
-        high_school,
-        college,
-        current_city,
-        home_town,
-      }),
-    });
+
+    try {
+      const response = await fetch(`http://localhost:4000/user/${id}/bio`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          relationship,
+          politics,
+          high_school,
+          college,
+          current_city,
+          home_town,
+        }),
+      });
+
+      if (response.ok) {
+        setError(null);
+        toggleEdit();
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setError("An error occurred while updating the profile.");
+    }
   };
 
   return (
-    <div className="profile-form-container">
+    <div className="current-details">
       <h2>Edit User Profile</h2>
       <form className="profile-form" onSubmit={handleFormSubmit}>
         <label>
@@ -61,12 +76,12 @@ export const EditDetails = () => {
               name="relationship"
               onChange={(e) => setRelationshipStatus(e.target.value)}
             >
-              <option value="single">Single</option>
-              <option value="in a relationship">In a relationship</option>
-              <option value="engaged">Engaged</option>
-              <option value="married">Married</option>
-              <option value="it's complicated">It's complicated</option>
-              <option value="decline">Prefer not to say</option>
+              <option value="Single">Single</option>
+              <option value="In A Relationship">In a relationship</option>
+              <option value="Engaged">Engaged</option>
+              <option value="Sarried">Married</option>
+              <option value="It's Complicated">It's complicated</option>
+              <option value="Prefer Not To Say">Prefer not to say</option>
             </select>
           </label>
         </div>
@@ -78,13 +93,13 @@ export const EditDetails = () => {
               name="politics"
               onChange={(e) => setPolitics(e.target.value)}
             >
-              <option value="very liberal">Very Liberal</option>
-              <option value="liberal">Liberal</option>
-              <option value="moderate">Moderate</option>
-              <option value="other">Other</option>
-              <option value="apolitical">Apolitical</option>
-              <option value="conservative">Conservative</option>
-              <option value="very conservative">Very Conservative</option>
+              <option value="Very Liberal">Very Liberal</option>
+              <option value="Liberal">Liberal</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Other">Other</option>
+              <option value="Apolitical">Apolitical</option>
+              <option value="Conservative">Conservative</option>
+              <option value="Very Conservative">Very Conservative</option>
 
               <option value="decline">Prefer not to say</option>
             </select>

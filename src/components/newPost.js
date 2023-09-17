@@ -57,7 +57,7 @@ export const NewPost = () => {
         name="content"
         maxLength="2000"
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Enter new post"
+        placeholder="Say what's on your mind"
       ></textarea>
       <button
         onClick={(e) => {

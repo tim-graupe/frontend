@@ -11,6 +11,8 @@ import { Profile } from "./components/profile";
 import { EditDetails } from "./components/userDash/editDetails";
 import { CreateGroup } from "./components/actions/createGroup";
 import { GroupPage } from "./components/groupPage";
+import { FriendReqs } from "./components/userDash/friendReqs";
+
 function App() {
   return (
     <BrowserRouter className="App">
@@ -24,6 +26,7 @@ function App() {
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/createGroup" element={<CreateGroup />} />
         <Route path="/group/:id" element={<GroupPage />} />
+        <Route path="/user/:id/friendRequests" element={<FriendReqs />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

@@ -8,8 +8,7 @@ export const NavBar = ({ props }) => {
       <SearchUser />
 
       <a href="/home">Home</a>
-      <a href={`/user/${props._id}`}>My profile</a>
-      <span className="material-symbols-outlined">person_add</span>
+      <a href={`/user/${props._id}`}>My Profile</a>
       {/* {props.incomingFriendRequests.length} */}
       <FriendReqs />
     </div>

@@ -1,4 +1,3 @@
-// this will show user's friends activity, ability to edit profile, upload photos, post a status, incoming/outgoing requests, etc
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { Friends, FriendsList } from "./userDash/friendsList";
@@ -8,7 +7,6 @@ import { Timeline } from "./timeline";
 import { SearchUser } from "../searchUser";
 import { FriendReqs } from "./friendReqs";
 import { FriendsFeed } from "./friendsFeed";
-import { FriendsList } from "./friendsList";
 
 export const UserHome = () => {
   const [user, setUser] = useState("");
@@ -42,6 +40,8 @@ export const UserHome = () => {
   return (
     <div className="user-home-friends-feed-container">
       <NavBar props={user} />
+      <h4>Welcome home, {user.firstName}</h4>
+      <NewPost />
       {/* <FriendReqs props={user} /> */}
       <FriendsFeed props={user._id} />
       {/* <FriendsList props={friends} /> */}

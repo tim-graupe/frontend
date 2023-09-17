@@ -88,6 +88,7 @@ export const Post = ({ props }) => {
         </Link>
         <p>{props.content}</p>
         <input
+          placeholder="Reply"
           id="comment"
           type="text"
           onChange={(e) => setComment(e.target.value)}

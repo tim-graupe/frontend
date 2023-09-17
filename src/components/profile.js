@@ -112,7 +112,7 @@ export const Profile = ({ props }) => {
         <p>Loading please wait...</p>
       ) : (
         <section className="profile-timeline-col">
-          <Bio props={user} />
+          <Bio props={user} loggedUser={loggedUser} />
           <h1>{user.firstName}'s Timeline</h1>
           <NewPost />
           <Timeline props={posts} />
