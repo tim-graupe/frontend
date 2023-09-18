@@ -26,7 +26,7 @@ export const Bio = ({ props, loggedUser_id, user_id }) => {
           <p>Relationship: {props.relationship}</p>
           <p>Politics: {props.politics}</p>
           <p>Hometown: {props.home_town}</p>
-          <p>Current City: {props.current_city}</p>
+          <p>Current City: {props.current_city}</p>+
         </section>
       )}
 

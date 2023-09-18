@@ -6,7 +6,7 @@ export const CreateGroup = () => {
   const [isPrivate, setIsPrivate] = useState(false);
 
   function handleClick(req, res) {
-    fetch(`http://localhost:4000/newGroup/`, {
+    fetch(`https://backend-production-f695.up.railway.app/newGroup/`, {
       method: "POST",
       mode: "cors",
       credentials: "include",

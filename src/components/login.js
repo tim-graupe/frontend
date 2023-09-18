@@ -13,11 +13,14 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open("http://localhost:4000/auth/google", "_self");
+    window.open(
+      "https://backend-production-f695.up.railway.app/auth/google",
+      "_self"
+    );
   };
   const submit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:4000/login", {
+    await fetch("hhttps://backend-production-f695.up.railway.app/login", {
       mode: "cors",
       method: "POST",
       credentials: "include",

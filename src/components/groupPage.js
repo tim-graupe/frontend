@@ -9,7 +9,7 @@ export const GroupPage = () => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`http://localhost:4000/`, {
+      fetch(`https://backend-production-f695.up.railway.app/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -17,7 +17,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`http://localhost:4000/group/${id}/`, {
+      fetch(`https://backend-production-f695.up.railway.app/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())

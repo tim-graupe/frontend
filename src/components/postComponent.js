@@ -8,25 +8,28 @@ export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
 
   const commentOnPost = (postId) => {
-    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        postId: postId,
-        comment: comment,
-        date: new Date(),
-      }),
-    });
+    fetch(
+      `https://backend-production-f695.up.railway.app/commentOnPost/${postId}`,
+      {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          postId: postId,
+          comment: comment,
+          date: new Date(),
+        }),
+      }
+    );
   };
 
   const likePost = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/likePost/${postId}/`,
+        `https://backend-production-f695.up.railway.app/likePost/${postId}/`,
         {
           method: "POST",
           mode: "cors",

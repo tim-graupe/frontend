@@ -14,11 +14,14 @@ export const SearchUser = () => {
   }, [id]);
 
   const handleSearch = async () => {
-    fetch(`http://localhost:4000/search?name=${searchName}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://backend-production-f695.up.railway.app/search?name=${searchName}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((response) => setResults(response));
   };

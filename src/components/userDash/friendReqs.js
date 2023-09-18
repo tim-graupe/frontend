@@ -6,9 +6,12 @@ export const FriendReqs = ({ props }) => {
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(`http://localhost:4000/getFriendReqs/${props}`, {
-          credentials: "include",
-        })
+        fetch(
+          `https://backend-production-f695.up.railway.app/getFriendReqs/${props}`,
+          {
+            credentials: "include",
+          }
+        )
           .then((res) => res.json())
           .then((res) => {
             setFriendReqs(res);
@@ -19,33 +22,39 @@ export const FriendReqs = ({ props }) => {
   }, [props]);
 
   const acceptFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/acceptFriendReq/${friendRequest}`, {
-      credentials: "include",
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        RequestingFriendsId: friendRequest,
-        // reqId: reqId
-      }),
-    });
+    fetch(
+      `https://backend-production-f695.up.railway.app/acceptFriendReq/${friendRequest}`,
+      {
+        credentials: "include",
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          RequestingFriendsId: friendRequest,
+          // reqId: reqId
+        }),
+      }
+    );
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
-      credentials: "include",
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        RequestingFriendsId: friendRequest,
-        // reqId: reqId
-      }),
-    });
+    fetch(
+      `https://backend-production-f695.up.railway.app/rejectFriendReq/${friendRequest}`,
+      {
+        credentials: "include",
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          RequestingFriendsId: friendRequest,
+          // reqId: reqId
+        }),
+      }
+    );
   };
   return (
     <div className="friend-reqs-list">

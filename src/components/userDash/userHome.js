@@ -15,7 +15,7 @@ export const UserHome = () => {
   const id = useParams().id;
 
   const getUserProfile = () => {
-    fetch(`http://localhost:4000/`, {
+    fetch(`https://backend-production-f695.up.railway.app/`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -24,7 +24,7 @@ export const UserHome = () => {
   };
 
   const getFriends = () => {
-    fetch(`http://localhost:4000/getFriends/`, {
+    fetch(`https://backend-production-f695.up.railway.app/getFriends/`, {
       credentials: "include",
     })
       .then((res) => res.json())

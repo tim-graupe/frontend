@@ -16,7 +16,7 @@ export const Profile = ({ props }) => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`http://localhost:4000/`, {
+      fetch(`https://backend-production-f695.up.railway.app/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -24,7 +24,7 @@ export const Profile = ({ props }) => {
     };
 
     const getUserPosts = () => {
-      fetch(`http://localhost:4000/user/${id}/posts`, {
+      fetch(`https://backend-production-f695.up.railway.app/user/${id}/posts`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -36,21 +36,24 @@ export const Profile = ({ props }) => {
   }, [id]);
 
   const addFriend = () => {
-    fetch(`http://localhost:4000/sendFriendReq/${id}`, {
-      credentials: "include",
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: loggedUser._id,
-      }),
-    });
+    fetch(
+      `https://backend-production-f695.up.railway.app/sendFriendReq/${id}`,
+      {
+        credentials: "include",
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: loggedUser._id,
+        }),
+      }
+    );
   };
 
   const deleteFriend = () => {
-    fetch(`http://localhost:4000/deleteFriend/${id}`, {
+    fetch(`https://backend-production-f695.up.railway.app/deleteFriend/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -65,9 +68,12 @@ export const Profile = ({ props }) => {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await fetch(`http://localhost:4000/user/${id}`, {
-          credentials: "include",
-        });
+        const response = await fetch(
+          `https://backend-production-f695.up.railway.app/user/${id}`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await response.json();
         setUser(data);
       } catch (error) {

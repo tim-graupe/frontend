@@ -10,6 +10,8 @@ export const EditDetails = ({ props, toggleEdit }) => {
   const [college, setCollege] = useState(props.college);
   const [current_city, setCurrentCity] = useState(props.current_city);
   const [home_town, setHomeTown] = useState(props.home_town);
+  const [profile_pic, setProfilePic] = useState(props.profile_pic);
+  const [picPreview, setPicPreview] = useState(null);
   const id = useParams().id;
   const [error, setError] = useState(null);
 
@@ -17,22 +19,26 @@ export const EditDetails = ({ props, toggleEdit }) => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:4000/user/${id}/bio`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          relationship,
-          politics,
-          high_school,
-          college,
-          current_city,
-          home_town,
-        }),
-      });
+      const response = await fetch(
+        `https://backend-production-f695.up.railway.app/user/${id}/bio`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            relationship,
+            politics,
+            high_school,
+            college,
+            current_city,
+            home_town,
+            profile_pic,
+          }),
+        }
+      );
 
       if (response.ok) {
         setError(null);
@@ -142,6 +148,19 @@ export const EditDetails = ({ props, toggleEdit }) => {
           />
         </label>
         <br />
+        <label>Profile pic: </label>
+        <input
+          type="file"
+          accept="image/jpeg, image/png, image/jpg"
+          onChange={(e) => {
+            console.log(e.target.files[0]);
+            setProfilePic(e.target.files[0]);
+            setPicPreview(e.target.files[0]);
+          }}
+        />
+        <output>
+          <img src={picPreview} alt="new profile pic" />
+        </output>
         <button type="submit" className="submit-button">
           Save Changes
         </button>
