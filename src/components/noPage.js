@@ -5,7 +5,7 @@ export const NoPage = () => {
   return (
     <p>
       404 not found. Please check your URL and try again{" "}
-      <Link to={"/"}>Take me home</Link>
+      <Link to={"/frontend"}>Take me home</Link>
     </p>
   );
 };
