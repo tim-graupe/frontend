@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { Friends, FriendsList } from "./userDash/friendsList";
-import { NavBar } from "../nav";
-import { NewPost } from "../newPost";
-import { Timeline } from "./timeline";
-import { SearchUser } from "../searchUser";
-import { FriendReqs } from "./friendReqs";
-import { FriendsFeed } from "./friendsFeed";
+import { NavBar } from "./nav";
+import { NewPost } from "./newPost";
+import { Timeline } from "./userDash/timeline";
+import { SearchUser } from "./searchUser";
+import { FriendReqs } from "./userDash/friendReqs";
+import { FriendsFeed } from "./userDash/friendsFeed";
 
 export const UserHome = () => {
   const [user, setUser] = useState("");

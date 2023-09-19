@@ -5,7 +5,7 @@ import { Login } from "./components/login";
 import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
 import { Timeline } from "./components/userDash/timeline";
-import { UserHome } from "./components/userDash/userHome";
+import { UserHome } from "./components/userHome";
 import { Profile } from "./components/profile";
 import { CreateGroup } from "./components/actions/createGroup";
 import { GroupPage } from "./components/groupPage";
