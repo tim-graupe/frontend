@@ -1,21 +1,19 @@
 import "./App.css";
-import { Router, BrowserRouter, Route, Routes } from "react-router-dom";
+import { Router, HashRouter, Route, Routes } from "react-router-dom";
 import { Register } from "./components/register";
 import { Login } from "./components/login";
-import { useEffect, useState } from "react";
 import { NewPost } from "./components/newPost";
 import { NoPage } from "./components/noPage";
 import { Timeline } from "./components/userDash/timeline";
 import { UserHome } from "./components/userDash/userHome";
 import { Profile } from "./components/profile";
-import { EditDetails } from "./components/userDash/editDetails";
 import { CreateGroup } from "./components/actions/createGroup";
 import { GroupPage } from "./components/groupPage";
 import { FriendReqs } from "./components/userDash/friendReqs";
 
 function App() {
   return (
-    <BrowserRouter className="App">
+    <HashRouter className="App">
       <Routes>
         <Route path="/frontend" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -29,7 +27,7 @@ function App() {
         <Route path="/user/:id/friendRequests" element={<FriendReqs />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
