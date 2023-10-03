@@ -16,7 +16,7 @@ export const Profile = ({ props }) => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`https://backend-production-f695.up.railway.app/`, {
+      fetch(`https://tim-graupe.github.io/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -24,7 +24,7 @@ export const Profile = ({ props }) => {
     };
 
     const getUserPosts = () => {
-      fetch(`https://backend-production-f695.up.railway.app/user/${id}/posts`, {
+      fetch(`https://tim-graupe.github.io/user/${id}/posts`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -36,24 +36,21 @@ export const Profile = ({ props }) => {
   }, [id]);
 
   const addFriend = () => {
-    fetch(
-      `https://backend-production-f695.up.railway.app/sendFriendReq/${id}`,
-      {
-        credentials: "include",
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: loggedUser._id,
-        }),
-      }
-    );
+    fetch(`https://tim-graupe.github.io/sendFriendReq/${id}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: loggedUser._id,
+      }),
+    });
   };
 
   const deleteFriend = () => {
-    fetch(`https://backend-production-f695.up.railway.app/deleteFriend/${id}`, {
+    fetch(`https://tim-graupe.github.io/deleteFriend/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -69,7 +66,7 @@ export const Profile = ({ props }) => {
     async function fetchUser() {
       try {
         const response = await fetch(
-          `https://backend-production-f695.up.railway.app/user/${id}`,
+          `https://tim-graupe.github.io/user/${id}`,
           {
             credentials: "include",
           }

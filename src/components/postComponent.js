@@ -8,28 +8,25 @@ export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
 
   const commentOnPost = (postId) => {
-    fetch(
-      `https://backend-production-f695.up.railway.app/commentOnPost/${postId}`,
-      {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          postId: postId,
-          comment: comment,
-          date: new Date(),
-        }),
-      }
-    );
+    fetch(`https://tim-graupe.github.io/commentOnPost/${postId}`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: postId,
+        comment: comment,
+        date: new Date(),
+      }),
+    });
   };
 
   const likePost = async (postId) => {
     try {
       const response = await fetch(
-        `https://backend-production-f695.up.railway.app/likePost/${postId}/`,
+        `https://tim-graupe.github.io/likePost/${postId}/`,
         {
           method: "POST",
           mode: "cors",

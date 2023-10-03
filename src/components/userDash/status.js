@@ -9,7 +9,7 @@
 //     setTextbox(!textbox);
 //   };
 //   const sendNewStatus = () => {
-//     fetch(`https://backend-production-f695.up.railway.app/user/${props}`, {
+//     fetch(`https://tim-graupe.github.io/user/${props}`, {
 //       method: "PUT",
 //       headers: {
 //         "Content-Type": "application/json",

@@ -6,12 +6,9 @@ export const FriendsFeed = ({ props }) => {
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(
-          `https://backend-production-f695.up.railway.app/getFriendsPosts/${props}`,
-          {
-            credentials: "include",
-          }
-        )
+        fetch(`https://tim-graupe.github.io/getFriendsPosts/${props}`, {
+          credentials: "include",
+        })
           .then((res) => res.json())
           .then((res) => {
             setFriendsPosts(res.friendsPosts);

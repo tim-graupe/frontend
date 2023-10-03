@@ -9,7 +9,7 @@ export const GroupPage = () => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`https://backend-production-f695.up.railway.app/`, {
+      fetch(`https://tim-graupe.github.io/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -17,7 +17,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`https://backend-production-f695.up.railway.app/group/${id}/`, {
+      fetch(`https://tim-graupe.github.io/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())

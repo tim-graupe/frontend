@@ -20,7 +20,7 @@ export const EditDetails = ({ props, toggleEdit }) => {
 
     try {
       const response = await fetch(
-        `https://backend-production-f695.up.railway.app/user/${id}/bio`,
+        `https://tim-graupe.github.io/user/${id}/bio`,
         {
           method: "PUT",
           headers: {

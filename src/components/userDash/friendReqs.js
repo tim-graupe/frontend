@@ -6,12 +6,9 @@ export const FriendReqs = ({ props }) => {
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(
-          `https://backend-production-f695.up.railway.app/getFriendReqs/${props}`,
-          {
-            credentials: "include",
-          }
-        )
+        fetch(`https://tim-graupe.github.io/getFriendReqs/${props}`, {
+          credentials: "include",
+        })
           .then((res) => res.json())
           .then((res) => {
             setFriendReqs(res);
@@ -22,39 +19,33 @@ export const FriendReqs = ({ props }) => {
   }, [props]);
 
   const acceptFriend = (friendRequest) => {
-    fetch(
-      `https://backend-production-f695.up.railway.app/acceptFriendReq/${friendRequest}`,
-      {
-        credentials: "include",
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          RequestingFriendsId: friendRequest,
-          // reqId: reqId
-        }),
-      }
-    );
+    fetch(`https://tim-graupe.github.io/acceptFriendReq/${friendRequest}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        RequestingFriendsId: friendRequest,
+        // reqId: reqId
+      }),
+    });
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(
-      `https://backend-production-f695.up.railway.app/rejectFriendReq/${friendRequest}`,
-      {
-        credentials: "include",
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          RequestingFriendsId: friendRequest,
-          // reqId: reqId
-        }),
-      }
-    );
+    fetch(`https://tim-graupe.github.io/rejectFriendReq/${friendRequest}`, {
+      credentials: "include",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        RequestingFriendsId: friendRequest,
+        // reqId: reqId
+      }),
+    });
   };
   return (
     <div className="friend-reqs-list">

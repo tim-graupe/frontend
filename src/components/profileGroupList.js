@@ -6,12 +6,9 @@ export const GroupList = ({ props }) => {
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(
-          `https://backend-production-f695.up.railway.app/user/${props._id}/groups/`,
-          {
-            credentials: "include",
-          }
-        )
+        fetch(`https://tim-graupe.github.io/user/${props._id}/groups/`, {
+          credentials: "include",
+        })
           .then((res) => res.json())
           .then((res) => {
             setGroups(res);

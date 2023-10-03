@@ -30,20 +30,17 @@ export const Register = () => {
   };
 
   const submit = async () => {
-    const response = await fetch(
-      "https://backend-production-f695.up.railway.app/register",
-      {
-        mode: "cors",
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "*/",
-        },
-        body: JSON.stringify(jsonData),
-      }
-    );
+    const response = await fetch("https://tim-graupe.github.io/register", {
+      mode: "cors",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "*/",
+      },
+      body: JSON.stringify(jsonData),
+    });
     const data = await response.json();
     console.log(data);
 

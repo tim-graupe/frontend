@@ -9,7 +9,7 @@ export const NewPost = () => {
 
   useEffect(() => {
     const getUserProfile = () => {
-      fetch(`https://backend-production-f695.up.railway.app/`, {
+      fetch(`https://tim-graupe.github.io/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -20,22 +20,19 @@ export const NewPost = () => {
   }, []);
 
   function handleClick(req, res) {
-    fetch(
-      `https://backend-production-f695.up.railway.app/user/${id}/new_post`,
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: content,
-          poster: loggedUser._id,
-          id: id,
-          date: new Date(),
-        }),
-      }
-    ).then(setContent(""));
+    fetch(`https://tim-graupe.github.io/user/${id}/new_post`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: content,
+        poster: loggedUser._id,
+        id: id,
+        date: new Date(),
+      }),
+    }).then(setContent(""));
   }
 
   function showFloatingMessage(e) {

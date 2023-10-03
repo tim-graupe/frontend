@@ -13,14 +13,11 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open(
-      "https://backend-production-f695.up.railway.app/auth/google",
-      "_self"
-    );
+    window.open("https://tim-graupe.github.io/auth/google", "_self");
   };
   const submit = async (e) => {
     e.preventDefault();
-    await fetch("hhttps://backend-production-f695.up.railway.app/login", {
+    await fetch("hhttps://tim-graupe.github.io/login", {
       mode: "cors",
       method: "POST",
       credentials: "include",
