@@ -13,11 +13,11 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open("https://tim-graupe.github.io/auth/google", "_self");
+    window.open("https://tim-graupe.github.io/frontend/auth/google", "_self");
   };
   const submit = async (e) => {
     e.preventDefault();
-    await fetch("hhttps://tim-graupe.github.io/login", {
+    await fetch("https://tim-graupe.github.io/login", {
       mode: "cors",
       method: "POST",
       credentials: "include",
