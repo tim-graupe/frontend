@@ -13,7 +13,7 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open("https://tim-graupe.github.io/frontend/auth/google", "_self");
+    window.open("https://tim-graupe.github.io/frontend/#/auth/google", "_self");
   };
   const submit = async (e) => {
     e.preventDefault();
