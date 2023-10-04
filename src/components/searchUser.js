@@ -14,7 +14,7 @@ export const SearchUser = () => {
   }, [id]);
 
   const handleSearch = async () => {
-    fetch(`https://tim-graupe.github.io/search?name=${searchName}`, {
+    fetch(`http://localhost:4000/search?name=${searchName}`, {
       headers: {
         "Content-Type": "application/json",
       },

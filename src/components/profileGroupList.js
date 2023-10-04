@@ -6,7 +6,7 @@ export const GroupList = ({ props }) => {
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(`https://tim-graupe.github.io/user/${props._id}/groups/`, {
+        fetch(`http://localhost:4000/user/${props._id}/groups/`, {
           credentials: "include",
         })
           .then((res) => res.json())

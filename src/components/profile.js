@@ -16,7 +16,7 @@ export const Profile = ({ props }) => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`https://tim-graupe.github.io/`, {
+      fetch(`http://localhost:4000/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -24,7 +24,7 @@ export const Profile = ({ props }) => {
     };
 
     const getUserPosts = () => {
-      fetch(`https://tim-graupe.github.io/user/${id}/posts`, {
+      fetch(`http://localhost:4000/user/${id}/posts`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -36,7 +36,7 @@ export const Profile = ({ props }) => {
   }, [id]);
 
   const addFriend = () => {
-    fetch(`https://tim-graupe.github.io/sendFriendReq/${id}`, {
+    fetch(`http://localhost:4000/sendFriendReq/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -50,7 +50,7 @@ export const Profile = ({ props }) => {
   };
 
   const deleteFriend = () => {
-    fetch(`https://tim-graupe.github.io/deleteFriend/${id}`, {
+    fetch(`http://localhost:4000/deleteFriend/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -65,12 +65,9 @@ export const Profile = ({ props }) => {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await fetch(
-          `https://tim-graupe.github.io/user/${id}`,
-          {
-            credentials: "include",
-          }
-        );
+        const response = await fetch(`http://localhost:4000/user/${id}`, {
+          credentials: "include",
+        });
         const data = await response.json();
         setUser(data);
       } catch (error) {

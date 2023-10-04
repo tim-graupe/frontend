@@ -6,7 +6,7 @@ export const FriendsFeed = ({ props }) => {
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(`https://tim-graupe.github.io/getFriendsPosts/${props}`, {
+        fetch(`http://localhost:4000/getFriendsPosts/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())

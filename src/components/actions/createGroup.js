@@ -6,7 +6,7 @@ export const CreateGroup = () => {
   const [isPrivate, setIsPrivate] = useState(false);
 
   function handleClick(req, res) {
-    fetch(`https://tim-graupe.github.io/newGroup/`, {
+    fetch(`http://localhost:3000/newGroup/`, {
       method: "POST",
       mode: "cors",
       credentials: "include",

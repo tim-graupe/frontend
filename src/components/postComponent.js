@@ -8,7 +8,7 @@ export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
 
   const commentOnPost = (postId) => {
-    fetch(`https://tim-graupe.github.io/commentOnPost/${postId}`, {
+    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -26,7 +26,7 @@ export const Post = ({ props }) => {
   const likePost = async (postId) => {
     try {
       const response = await fetch(
-        `https://tim-graupe.github.io/likePost/${postId}/`,
+        `http://localhost:4000/likePost/${postId}/`,
         {
           method: "POST",
           mode: "cors",

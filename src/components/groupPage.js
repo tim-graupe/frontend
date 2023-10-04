@@ -9,7 +9,7 @@ export const GroupPage = () => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`https://tim-graupe.github.io/`, {
+      fetch(`http://localhost:4000/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -17,7 +17,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`https://tim-graupe.github.io/group/${id}/`, {
+      fetch(`http://localhost:4000/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())

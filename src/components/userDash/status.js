@@ -9,7 +9,7 @@
 //     setTextbox(!textbox);
 //   };
 //   const sendNewStatus = () => {
-//     fetch(`https://tim-graupe.github.io/user/${props}`, {
+//     fetch(`http://localhost:3000/user/${props}`, {
 //       method: "PUT",
 //       headers: {
 //         "Content-Type": "application/json",

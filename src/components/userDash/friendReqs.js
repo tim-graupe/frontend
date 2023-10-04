@@ -6,7 +6,7 @@ export const FriendReqs = ({ props }) => {
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(`https://tim-graupe.github.io/getFriendReqs/${props}`, {
+        fetch(`http://localhost:4000/getFriendReqs/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())
@@ -19,7 +19,7 @@ export const FriendReqs = ({ props }) => {
   }, [props]);
 
   const acceptFriend = (friendRequest) => {
-    fetch(`https://tim-graupe.github.io/acceptFriendReq/${friendRequest}`, {
+    fetch(`http://localhost:4000/acceptFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -34,7 +34,7 @@ export const FriendReqs = ({ props }) => {
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(`https://tim-graupe.github.io/rejectFriendReq/${friendRequest}`, {
+    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",

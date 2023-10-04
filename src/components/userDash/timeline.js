@@ -7,7 +7,7 @@ export const Timeline = ({ props }) => {
   useEffect(() => {
     const getPosts = () => {
       if (props) {
-        fetch(`https://tim-graupe.github.io/user/${props}/posts`, {
+        fetch(`http://localhost:4000/user/${props}/posts`, {
           credentials: "include",
         })
           .then((res) => res.json())

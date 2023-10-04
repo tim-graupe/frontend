@@ -30,7 +30,7 @@ export const Register = () => {
   };
 
   const submit = async () => {
-    const response = await fetch("https://tim-graupe.github.io/register", {
+    const response = await fetch("http://localhost:4000/register", {
       mode: "cors",
       method: "POST",
       headers: {

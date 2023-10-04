@@ -9,7 +9,7 @@ export const NewPost = () => {
 
   useEffect(() => {
     const getUserProfile = () => {
-      fetch(`https://tim-graupe.github.io/`, {
+      fetch(`http://localhost:4000/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -20,7 +20,7 @@ export const NewPost = () => {
   }, []);
 
   function handleClick(req, res) {
-    fetch(`https://tim-graupe.github.io/user/${id}/new_post`, {
+    fetch(`http://localhost:4000/user/${id}/new_post`, {
       method: "POST",
       mode: "cors",
       headers: {
