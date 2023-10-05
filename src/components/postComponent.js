@@ -6,9 +6,10 @@ import "../styles/posts.css";
 
 export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   const commentOnPost = (postId) => {
-    fetch(`http://localhost:4000/commentOnPost/${postId}`, {
+    fetch(`${apiUrl}/commentOnPost/${postId}`, {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -25,20 +26,17 @@ export const Post = ({ props }) => {
 
   const likePost = async (postId) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/likePost/${postId}/`,
-        {
-          method: "POST",
-          mode: "cors",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            postId: postId,
-          }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/likePost/${postId}/`, {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          postId: postId,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(`Error liking post (Status: ${response.status})`);

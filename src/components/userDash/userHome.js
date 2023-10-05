@@ -13,9 +13,10 @@ export const UserHome = () => {
   const [friends, setFriends] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   const getUserProfile = () => {
-    fetch(`http://localhost:4000/`, {
+    fetch(`${apiUrl}/`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -24,7 +25,7 @@ export const UserHome = () => {
   };
 
   const getFriends = () => {
-    fetch(`http://localhost:4000/getFriends/`, {
+    fetch(`${apiUrl}/getFriends/`, {
       credentials: "include",
     })
       .then((res) => res.json())

@@ -14,6 +14,7 @@ export const Register = () => {
   const [currentCity, setCurrentCity] = useState("");
   const [highschool, setHighschool] = useState("");
   const [college, setCollege] = useState("");
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   const jsonData = {
     firstName: firstName,
@@ -30,7 +31,7 @@ export const Register = () => {
   };
 
   const submit = async () => {
-    const response = await fetch("http://localhost:4000/register", {
+    const response = await fetch(`${apiUrl}/register`, {
       mode: "cors",
       method: "POST",
       headers: {

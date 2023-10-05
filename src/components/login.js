@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import React, { useState } from "react";
 import GoogleButton from "react-google-button";
-import { SearchUser } from "./searchUser";
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   const jsonData = {
     email: email,
@@ -13,11 +12,11 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open("http://localhost:4000/auth/google", "_self");
+    window.open(`${apiUrl}/auth/google`, "_self");
   };
   const submit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:4000/login", {
+    await fetch(`${apiUrl}/login`, {
       mode: "cors",
       method: "POST",
       credentials: "include",

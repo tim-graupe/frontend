@@ -9,6 +9,7 @@ export const NavBar = ({ props }) => {
 
       <a href="/home">Home</a>
       <a href={`/user/${props._id}`}>My Profile</a>
+      <a href="/log-out">Logout</a>
       {/* {props.incomingFriendRequests.length} */}
       <FriendReqs />
     </div>

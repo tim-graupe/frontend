@@ -12,12 +12,13 @@ export const EditDetails = ({ props, toggleEdit }) => {
   const [home_town, setHomeTown] = useState(props.home_town);
   const id = useParams().id;
   const [error, setError] = useState(null);
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:4000/user/${id}/bio`, {
+      const response = await fetch(`${apiUrl}/user/${id}/bio`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

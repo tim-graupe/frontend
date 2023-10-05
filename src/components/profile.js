@@ -13,10 +13,11 @@ export const Profile = ({ props }) => {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
   const id = useParams().id;
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`http://localhost:4000/`, {
+      fetch(`${apiUrl}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -24,7 +25,7 @@ export const Profile = ({ props }) => {
     };
 
     const getUserPosts = () => {
-      fetch(`http://localhost:4000/user/${id}/posts`, {
+      fetch(`${apiUrl}/user/${id}/posts`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -36,7 +37,7 @@ export const Profile = ({ props }) => {
   }, [id]);
 
   const addFriend = () => {
-    fetch(`http://localhost:4000/sendFriendReq/${id}`, {
+    fetch(`${apiUrl}/sendFriendReq/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -50,7 +51,7 @@ export const Profile = ({ props }) => {
   };
 
   const deleteFriend = () => {
-    fetch(`http://localhost:4000/deleteFriend/${id}`, {
+    fetch(`${apiUrl}/deleteFriend/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -65,7 +66,7 @@ export const Profile = ({ props }) => {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await fetch(`http://localhost:4000/user/${id}`, {
+        const response = await fetch(`${apiUrl}/user/${id}`, {
           credentials: "include",
         });
         const data = await response.json();

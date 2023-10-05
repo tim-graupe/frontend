@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 
 export const FriendReqs = ({ props }) => {
   const [friendReqs, setFriendReqs] = useState([]);
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(`http://localhost:4000/getFriendReqs/${props}`, {
+        fetch(`${apiUrl}/getFriendReqs/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())
@@ -19,7 +20,7 @@ export const FriendReqs = ({ props }) => {
   }, [props]);
 
   const acceptFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/acceptFriendReq/${friendRequest}`, {
+    fetch(`${apiUrl}/acceptFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -34,7 +35,7 @@ export const FriendReqs = ({ props }) => {
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
+    fetch(`${apiUrl}/rejectFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",

@@ -3,11 +3,12 @@ import { Post } from "../postComponent";
 export const Timeline = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getPosts = () => {
       if (props) {
-        fetch(`http://localhost:4000/user/${props}/posts`, {
+        fetch(`${apiUrl}/user/${props}/posts`, {
           credentials: "include",
         })
           .then((res) => res.json())

@@ -6,10 +6,11 @@ export const NewPost = () => {
   const [loggedUser, setLoggedUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getUserProfile = () => {
-      fetch(`http://localhost:4000/`, {
+      fetch(`${apiUrl}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -20,7 +21,7 @@ export const NewPost = () => {
   }, []);
 
   function handleClick(req, res) {
-    fetch(`http://localhost:4000/user/${id}/new_post`, {
+    fetch(`${apiUrl}/user/${id}/new_post`, {
       method: "POST",
       mode: "cors",
       headers: {

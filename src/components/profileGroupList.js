@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 export const GroupList = ({ props }) => {
   const [groups, setGroups] = useState([]);
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(`http://localhost:4000/user/${props._id}/groups/`, {
+        fetch(`${apiUrl}/user/${props._id}/groups/`, {
           credentials: "include",
         })
           .then((res) => res.json())

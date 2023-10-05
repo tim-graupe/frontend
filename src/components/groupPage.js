@@ -6,10 +6,11 @@ export const GroupPage = () => {
   const [loggedUser, setLoggedUser] = useState("");
   const [group, setGroup] = useState([]);
   const id = useParams().id;
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`http://localhost:4000/`, {
+      fetch(`${apiUrl}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -17,7 +18,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`http://localhost:4000/group/${id}/`, {
+      fetch(`${apiUrl}/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
