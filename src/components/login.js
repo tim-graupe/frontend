@@ -12,7 +12,10 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open(`${apiUrl}/auth/google`, "_self");
+    window.open(
+      `https://backend-production-f695.up.railway.app/auth/google`,
+      "_self"
+    );
   };
   const submit = async (e) => {
     e.preventDefault();
