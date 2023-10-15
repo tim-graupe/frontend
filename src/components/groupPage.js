@@ -6,11 +6,11 @@ export const GroupPage = () => {
   const [loggedUser, setLoggedUser] = useState("");
   const [group, setGroup] = useState([]);
   const id = useParams().id;
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  // const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`${apiUrl}/`, {
+      fetch(`https://backend-production-f695.up.railway.app/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -18,7 +18,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`${apiUrl}/group/${id}/`, {
+      fetch(`https://backend-production-f695.up.railway.app/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())

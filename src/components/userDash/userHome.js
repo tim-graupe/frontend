@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import { Friends, FriendsList } from "./userDash/friendsList";
 import { NavBar } from "../nav";
 import { NewPost } from "../newPost";
-import { Timeline } from "./timeline";
-import { SearchUser } from "../searchUser";
-import { FriendReqs } from "./friendReqs";
 import { FriendsFeed } from "./friendsFeed";
+import config from "../../config";
 
 export const UserHome = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [friends, setFriends] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   const getUserProfile = () => {
     fetch(`${apiUrl}/`, {
@@ -34,18 +34,26 @@ export const UserHome = () => {
 
   useEffect(() => {
     getFriends();
-
     getUserProfile();
   }, []);
 
+  const test = () => {
+    fetch(`${apiUrl}/`)
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
+
   return (
     <div className="user-home-friends-feed-container">
-      <NavBar props={user} />
-      <h4>Welcome home, {user.firstName}</h4>
+      {user && user.firstName ? (
+        <div className="nav-header">
+          <NavBar props={user} />
+
+          <h4 onClick={test}>Welcome home, {user.firstName}!</h4>
+        </div>
+      ) : null}
       <NewPost />
-      {/* <FriendReqs props={user} /> */}
-      <FriendsFeed props={user._id} />
-      {/* <FriendsList props={friends} /> */}
+      {friends.length > 0 ? <FriendsFeed props={user._id} /> : null}
     </div>
   );
 };
