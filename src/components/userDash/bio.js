@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { EditDetails } from "./editDetails";
 
-export const Bio = ({ props, loggedUser_id, user_id }) => {
+export const Bio = ({ props, loggedUser }) => {
   const [user, setUser] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const id = useParams().id;
@@ -29,11 +29,12 @@ export const Bio = ({ props, loggedUser_id, user_id }) => {
           <p>Current City: {props.current_city}</p>
         </section>
       )}
-
-      {loggedUser_id === user_id && (
+      {props._id === loggedUser._id ? (
         <button className="edit-btn" onClick={toggleEdit}>
           {isEditing ? "Cancel" : "Edit"}
         </button>
+      ) : (
+        <></>
       )}
     </div>
   );

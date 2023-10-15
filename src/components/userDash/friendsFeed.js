@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Post } from "../postComponent";
 export const FriendsFeed = ({ props }) => {
   const [friendsPosts, setFriendsPosts] = useState([]);
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(`${apiUrl}/getFriendsPosts/${props}`, {
+        fetch(`http://localhost:4000/getFriendsPosts/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())

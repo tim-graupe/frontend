@@ -42,31 +42,85 @@
     margin-right: 10px;
 }
 
-.dropdown {
+.container {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content {
-    display: none;
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.incoming-friend-requests-container {
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    top: 0;
+    left: 25px;
+    /* Adjust the number of pixels to your preference */
+    background-color: rgb(132, 132, 132);
+    border-radius: 60%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+/* Navbar friend requests list */
+.friend-reqs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.dropdown-content a:hover {
-    background-color: #ddd;
+.friend-req-item {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.friend-req-item-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.friend-req-item-details {
+    flex: 1;
+}
+
+.friend-req-item-name {
+    margin: 0;
+    font-weight: bold;
+}
+
+.friend-req-item-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.accept-button,
+.reject-button {
+    padding: 3px 10px;
+    background-color: #4CAF50;
+    /* Green for accept */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.reject-button {
+    background-color: #F44336;
+    /* Red for reject */
+}
+
+.accept-button:hover,
+.reject-button:hover {
+    background-color: #45a049;
+    /* Darker green for accept, darker red for reject */
 }

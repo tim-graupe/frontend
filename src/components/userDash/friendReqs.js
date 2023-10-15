@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
+import "../../styles/navBar.css";
 export const FriendReqs = ({ props }) => {
   const [friendReqs, setFriendReqs] = useState([]);
   const apiUrl = process.env.API_URL || "http://localhost:4000";
@@ -7,7 +8,7 @@ export const FriendReqs = ({ props }) => {
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(`${apiUrl}/getFriendReqs/${props}`, {
+        fetch(`http://localhost:4000/getFriendReqs/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())
@@ -17,10 +18,10 @@ export const FriendReqs = ({ props }) => {
       }
     };
     getFriendReqs();
-  }, [props]);
+  }, []);
 
   const acceptFriend = (friendRequest) => {
-    fetch(`${apiUrl}/acceptFriendReq/${friendRequest}`, {
+    fetch(`http://localhost:4000/acceptFriendReq/${friendRequest._id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -28,14 +29,16 @@ export const FriendReqs = ({ props }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        RequestingFriendsId: friendRequest,
-        // reqId: reqId
+        RequestingFriendsId: friendRequest._id,
+        currentUser: props,
+        firstName: friendRequest.firstName,
+        lastName: friendRequest.lastName,
       }),
     });
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(`${apiUrl}/rejectFriendReq/${friendRequest}`, {
+    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -44,40 +47,44 @@ export const FriendReqs = ({ props }) => {
       },
       body: JSON.stringify({
         RequestingFriendsId: friendRequest,
-        // reqId: reqId
+        currentUser: props,
       }),
     });
   };
   return (
-    <div className="friend-reqs-list">
-      {friendReqs.map((friendRequest) => {
-        return (
-          <div key={friendRequest._id} className="friend-req-card">
+    <ul className="friend-reqs-list">
+      {friendReqs.map((friendRequest) => (
+        <li key={friendRequest._id} className="friend-req-item">
+          <Link to={`/user/${friendRequest._id}`}>
             <img
-              className="friend-req-card-pic"
+              className="friend-req-item-pic"
               src={friendRequest.profile_pic}
               alt="profile-pic"
             />
-            <p>
+          </Link>
+
+          <div className="friend-req-item-details">
+            <p className="friend-req-item-name">
               {friendRequest.firstName} {friendRequest.lastName}
             </p>
-            <button
-              onClick={() => {
-                acceptFriend(friendRequest);
-              }}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => {
-                rejectFriend(friendRequest);
-              }}
-            >
-              Reject
-            </button>
+
+            <div className="friend-req-item-buttons">
+              <button
+                onClick={() => acceptFriend(friendRequest)}
+                className="accept-button"
+              >
+                Accept
+              </button>
+              <button
+                onClick={() => rejectFriend(friendRequest._id)}
+                className="reject-button"
+              >
+                Reject
+              </button>
+            </div>
           </div>
-        );
-      })}
-    </div>
+        </li>
+      ))}
+    </ul>
   );
 };

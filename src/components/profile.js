@@ -13,11 +13,10 @@ export const Profile = ({ props }) => {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
   const id = useParams().id;
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`${apiUrl}/`, {
+      fetch(`http://localhost:4000/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -25,7 +24,7 @@ export const Profile = ({ props }) => {
     };
 
     const getUserPosts = () => {
-      fetch(`${apiUrl}/user/${id}/posts`, {
+      fetch(`http://localhost:4000/user/${id}/posts`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -37,7 +36,7 @@ export const Profile = ({ props }) => {
   }, [id]);
 
   const addFriend = () => {
-    fetch(`${apiUrl}/sendFriendReq/${id}`, {
+    fetch(`http://localhost:4000/sendFriendReq/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -51,7 +50,7 @@ export const Profile = ({ props }) => {
   };
 
   const deleteFriend = () => {
-    fetch(`${apiUrl}/deleteFriend/${id}`, {
+    fetch(`http://localhost:4000/deleteFriend/${id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -66,7 +65,7 @@ export const Profile = ({ props }) => {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await fetch(`${apiUrl}/user/${id}`, {
+        const response = await fetch(`http://localhost:4000/user/${id}`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -93,16 +92,23 @@ export const Profile = ({ props }) => {
             className="main-profile-pic"
           />
 
-          {loggedUser._id === id ? (
-            <div></div>
-          ) : (
+          {loggedUser._id === id ? null : (
             <div className="friend-btns">
-              <button className="friend-btns" onClick={addFriend}>
-                Add friend
-              </button>
-              <button className="friend-btns" onClick={deleteFriend}>
-                Delete Friend
-              </button>
+              {loggedUser.friends?.includes(id) ? (
+                <button className="friend-btns" onClick={deleteFriend}>
+                  Delete Friend
+                </button>
+              ) : loggedUser.incomingFriendRequests?.includes(id) ? (
+                <button className="friend-btns" onClick={addFriend}>
+                  Accept Friend Request
+                </button>
+              ) : loggedUser.outgoingFriendRequests?.includes(id) ? (
+                <button className="friend-btns">Friend Request Pending</button>
+              ) : (
+                <button className="friend-btns" onClick={addFriend}>
+                  Add Friend
+                </button>
+              )}
             </div>
           )}
         </div>

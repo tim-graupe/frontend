@@ -8,9 +8,12 @@ export const Timeline = ({ props }) => {
   useEffect(() => {
     const getPosts = () => {
       if (props) {
-        fetch(`${apiUrl}/user/${props}/posts`, {
-          credentials: "include",
-        })
+        fetch(
+          `https://backend-production-f695.up.railway.app/user/${props}/posts`,
+          {
+            credentials: "include",
+          }
+        )
           .then((res) => res.json())
           .then((res) => {
             setPosts(res);

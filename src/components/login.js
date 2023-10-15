@@ -17,32 +17,32 @@ export const Login = () => {
       "_self"
     );
   };
-  const submit = async (e) => {
-    e.preventDefault();
-    await fetch(`${apiUrl}/login`, {
-      mode: "cors",
-      method: "POST",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "*/",
-      },
-      body: JSON.stringify(jsonData),
-    })
-      .then((res) => res.json())
-      .then((res) => [
-        // setUser(JSON.stringify(res.user._id)),
-        // localStorage.setItem("user", JSON.stringify(res.user)),
-        // localStorage.setItem("isAuth", true),
-        // setIsLoggedIn(true),
-      ]);
-  };
+  // const submit = async (e) => {
+  //   e.preventDefault();
+  //   await fetch(`${apiUrl}/login`, {
+  //     mode: "cors",
+  //     method: "POST",
+  //     credentials: "include",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "*/",
+  //     },
+  //     body: JSON.stringify(jsonData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => [
+  //       // setUser(JSON.stringify(res.user._id)),
+  //       // localStorage.setItem("user", JSON.stringify(res.user)),
+  //       // localStorage.setItem("isAuth", true),
+  //       // setIsLoggedIn(true),
+  //     ]);
+  // };
 
   return (
     <div className="App">
-      <input
+      {/* <input
         type="email"
         name="email"
         required
@@ -54,7 +54,7 @@ export const Login = () => {
         required
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={submit}>Login</button> <br></br>
+      <button onClick={submit}>Login</button> <br></br> */}
       <GoogleButton onClick={handleSignInGoogle} />
     </div>
   );
