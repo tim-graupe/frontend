@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navBar.css";
+import config from "../../config";
 export const FriendReqs = ({ props }) => {
   const [friendReqs, setFriendReqs] = useState([]);
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {
-        fetch(`http://localhost:4000/getFriendReqs/${props}`, {
+        fetch(`${apiUrl}/getFriendReqs/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())
@@ -21,7 +25,7 @@ export const FriendReqs = ({ props }) => {
   }, []);
 
   const acceptFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/acceptFriendReq/${friendRequest._id}`, {
+    fetch(`${apiUrl}/acceptFriendReq/${friendRequest._id}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",
@@ -38,7 +42,7 @@ export const FriendReqs = ({ props }) => {
   };
 
   const rejectFriend = (friendRequest) => {
-    fetch(`http://localhost:4000/rejectFriendReq/${friendRequest}`, {
+    fetch(`${apiUrl}/rejectFriendReq/${friendRequest}`, {
       credentials: "include",
       method: "POST",
       mode: "cors",

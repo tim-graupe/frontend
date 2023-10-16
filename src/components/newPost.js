@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/posts.css";
+import config from "../config";
 export const NewPost = () => {
   const [content, setContent] = useState("");
   const [loggedUser, setLoggedUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const id = useParams().id;
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   useEffect(() => {
     const getUserProfile = () => {
-      fetch(`https://backend-production-f695.up.railway.app/`, {
+      fetch(`${apiUrl}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -21,22 +25,19 @@ export const NewPost = () => {
   }, []);
 
   function handleClick(req, res) {
-    fetch(
-      `https://backend-production-f695.up.railway.app/user/${id}/new_post`,
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: content,
-          poster: loggedUser._id,
-          id: id,
-          date: new Date(),
-        }),
-      }
-    ).then(setContent(""));
+    fetch(`${apiUrl}/user/${id}/new_post`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: content,
+        poster: loggedUser._id,
+        id: id,
+        date: new Date(),
+      }),
+    }).then(setContent(""));
   }
 
   function showFloatingMessage(e) {

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useFetcher, useParams } from "react-router-dom";
 import "../styles/navBar.css";
+import config from "../config";
 export const SearchUser = () => {
   const [searchName, setSearchName] = useState("");
   const [results, setResults] = useState([]);
   const id = useParams().id;
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
+
   useEffect(() => {
     handleSearch();
   }, [searchName]);
@@ -15,14 +21,11 @@ export const SearchUser = () => {
 
   const handleSearch = async () => {
     //replace with http://localhost:4000/
-    fetch(
-      `https://backend-production-f695.up.railway.app/search?name=${searchName}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${apiUrl}/search?name=${searchName}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((response) => setResults(response));
   };

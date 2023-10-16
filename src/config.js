@@ -3,7 +3,7 @@ const config = {
     apiUrl: "http://localhost:4000",
   },
   production: {
-    apiUrl: "https://backend-production-f695.up.railway.app/",
+    apiUrl: "https://backend-production-f695.up.railway.app",
   },
 };
 

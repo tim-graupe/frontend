@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import GoogleButton from "react-google-button";
-
+import config from "../config";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   const jsonData = {
     email: email,
@@ -12,10 +15,7 @@ export const Login = () => {
   };
 
   const handleSignInGoogle = () => {
-    window.open(
-      `https://backend-production-f695.up.railway.app/auth/google`,
-      "_self"
-    );
+    window.open(`${apiUrl}/auth/google`, "_self");
   };
   // const submit = async (e) => {
   //   e.preventDefault();

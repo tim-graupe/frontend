@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import config from "../config";
 export const GroupList = ({ props }) => {
   const [groups, setGroups] = useState([]);
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(
-          `https://backend-production-f695.up.railway.app/user/${props._id}/groups/`,
-          {
-            credentials: "include",
-          }
-        )
+        fetch(`${apiUrl}/user/${props._id}/groups/`, {
+          credentials: "include",
+        })
           .then((res) => res.json())
           .then((res) => {
             setGroups(res);

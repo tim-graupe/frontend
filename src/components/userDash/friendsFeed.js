@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Post } from "../postComponent";
+import config from "../../config";
 export const FriendsFeed = ({ props }) => {
   const [friendsPosts, setFriendsPosts] = useState([]);
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   useEffect(() => {
     const getFriendsPosts = () => {
       if (props) {
-        fetch(`http://localhost:4000/getFriendsPosts/${props}`, {
+        fetch(`${apiUrl}/getFriendsPosts/${props}`, {
           credentials: "include",
         })
           .then((res) => res.json())
