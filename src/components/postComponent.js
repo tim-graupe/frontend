@@ -2,12 +2,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Comment } from "./comment";
+import config from "../config";
 import "../styles/posts.css";
 
 export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
-
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
   const commentOnPost = (postId) => {
     fetch(`${apiUrl}/commentOnPost/${postId}`, {
       method: "POST",

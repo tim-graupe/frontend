@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import config from "../config";
 export const GroupPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loggedUser, setLoggedUser] = useState("");
   const [group, setGroup] = useState([]);
   const id = useParams().id;
-  // const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`https://backend-production-f695.up.railway.app/`, {
+      fetch(`${apiUrl}/`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -18,7 +21,7 @@ export const GroupPage = () => {
     };
 
     const getGroupDetails = () => {
-      fetch(`https://backend-production-f695.up.railway.app/group/${id}/`, {
+      fetch(`${apiUrl}/group/${id}/`, {
         credentials: "include",
       })
         .then((res) => res.json())

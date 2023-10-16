@@ -16,7 +16,7 @@ export const UserHome = () => {
       : config.production.apiUrl;
 
   const getUserProfile = () => {
-    fetch(`${apiUrl}/`, {
+    fetch(`${apiUrl}`, {
       credentials: "include",
     })
       .then((res) => res.json())

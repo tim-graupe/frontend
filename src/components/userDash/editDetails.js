@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-
+import config from "../../config";
 export const EditDetails = ({ props, toggleEdit }) => {
   const [firstName, setFirstName] = useState(props.firstName);
   const [lastName, setLastName] = useState(props.lastName);
@@ -10,10 +10,13 @@ export const EditDetails = ({ props, toggleEdit }) => {
   const [college, setCollege] = useState(props.college);
   const [current_city, setCurrentCity] = useState(props.current_city);
   const [home_town, setHomeTown] = useState(props.home_town);
+
   const id = useParams().id;
   const [error, setError] = useState(null);
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
-
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
-
+import config from "../config";
 export const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,7 +14,10 @@ export const Register = () => {
   const [currentCity, setCurrentCity] = useState("");
   const [highschool, setHighschool] = useState("");
   const [college, setCollege] = useState("");
-  const apiUrl = process.env.API_URL || "http://localhost:4000";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? config.development.apiUrl
+      : config.production.apiUrl;
 
   const jsonData = {
     firstName: firstName,
