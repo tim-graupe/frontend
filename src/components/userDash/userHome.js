@@ -37,12 +37,6 @@ export const UserHome = () => {
     getUserProfile();
   }, []);
 
-  const test = () => {
-    fetch(`${apiUrl}/`)
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
-
   return (
     <div className="user-home-friends-feed-container">
       {user && user.firstName ? (
