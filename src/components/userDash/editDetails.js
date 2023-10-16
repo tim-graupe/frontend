@@ -10,13 +10,17 @@ export const EditDetails = ({ props, toggleEdit }) => {
   const [college, setCollege] = useState(props.college);
   const [current_city, setCurrentCity] = useState(props.current_city);
   const [home_town, setHomeTown] = useState(props.home_town);
+
   const id = useParams().id;
   const [error, setError] = useState(null);
   const apiUrl =
     process.env.NODE_ENV === "development"
       ? config.development.apiUrl
       : config.production.apiUrl;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6102586159c90038780cc06ada5ca61600517c33
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 

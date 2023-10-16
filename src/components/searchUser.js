@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useFetcher, useParams } from "react-router-dom";
+import config from "../config";
 import "../styles/navBar.css";
 import config from "../config";
 export const SearchUser = () => {

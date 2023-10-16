@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+// import { Link } from "react-router-dom";
+>>>>>>> 6102586159c90038780cc06ada5ca61600517c33
 import config from "../config";
 export const Register = () => {
   const [firstName, setFirstName] = useState("");
