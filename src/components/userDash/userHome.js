@@ -29,7 +29,13 @@ export const UserHome = () => {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((res) => setFriends(res.user.friends));
+      .then((res) => {
+        if (res.user && res.user.friends) {
+          setFriends(res.user.friends);
+        } else {
+          setFriends([]);
+        }
+      });
   };
 
   useEffect(() => {

@@ -8,10 +8,6 @@ export const FriendReqs = ({ props }) => {
     process.env.NODE_ENV === "development"
       ? config.development.apiUrl
       : config.production.apiUrl;
-<<<<<<< HEAD
-
-=======
->>>>>>> 6102586159c90038780cc06ada5ca61600517c33
   useEffect(() => {
     const getFriendReqs = () => {
       if (props) {

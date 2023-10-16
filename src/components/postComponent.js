@@ -4,17 +4,12 @@ import { Link } from "react-router-dom";
 import { Comment } from "./comment";
 import config from "../config";
 import "../styles/posts.css";
-import config from "../config";
 export const Post = ({ props }) => {
   const [comment, setComment] = useState("");
   const apiUrl =
     process.env.NODE_ENV === "development"
       ? config.development.apiUrl
       : config.production.apiUrl;
-<<<<<<< HEAD
-
-=======
->>>>>>> 6102586159c90038780cc06ada5ca61600517c33
   const commentOnPost = (postId) => {
     fetch(`${apiUrl}/commentOnPost/${postId}`, {
       method: "POST",
