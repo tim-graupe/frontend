@@ -4,7 +4,7 @@ import { NavBar } from "../nav";
 import { NewPost } from "../newPost";
 import { FriendsFeed } from "./friendsFeed";
 import config from "../../config";
-
+const axios = require("axios");
 export const UserHome = () => {
   const [user, setUser] = useState(null);
   const [friends, setFriends] = useState([]);
@@ -29,13 +29,7 @@ export const UserHome = () => {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((res) => {
-        if (res.user && res.user.friends) {
-          setFriends(res.user.friends);
-        } else {
-          setFriends([]);
-        }
-      });
+      .then((res) => setFriends(res.user.friends));
   };
 
   useEffect(() => {
@@ -49,7 +43,7 @@ export const UserHome = () => {
         <div className="nav-header">
           <NavBar props={user} />
 
-          <h4 onClick={test}>Welcome home, {user.firstName}!</h4>
+          <h4>Welcome home, {user.firstName}!</h4>
         </div>
       ) : null}
       <NewPost />
